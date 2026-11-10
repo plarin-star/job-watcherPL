@@ -1,330 +1,1386 @@
-[
+{
+ "ok": [
   {
-    "name": "stripe",
-    "ats": "greenhouse",
-    "target": "stripe",
-    "ok": true,
-    "count": 776,
-    "error": null
+   "ats": "ashby",
+   "target": "kraken.com",
+   "count": 89,
+   "error": null
   },
   {
-    "name": "robinhood",
-    "ats": "greenhouse",
-    "target": "robinhood",
-    "ok": true,
-    "count": 152,
-    "error": null
+   "ats": "ashby",
+   "target": "plaid",
+   "count": 140,
+   "error": null
   },
   {
-    "name": "affirm",
-    "ats": "greenhouse",
-    "target": "affirm",
-    "ok": true,
-    "count": 213,
-    "error": null
+   "ats": "ashby",
+   "target": "ramp",
+   "count": 173,
+   "error": null
   },
   {
-    "name": "coinbase",
-    "ats": "greenhouse",
-    "target": "coinbase",
-    "ok": true,
-    "count": 285,
-    "error": null
+   "ats": "goldman-graphql",
+   "target": "api-higher.gs.com",
+   "count": 730,
+   "error": null
   },
   {
-    "name": "brex",
-    "ats": "greenhouse",
-    "target": "brex",
-    "ok": true,
-    "count": 276,
-    "error": null
+   "ats": "greenhouse",
+   "target": "akunacapital",
+   "count": 30,
+   "error": null
   },
   {
-    "name": "sofi",
-    "ats": "greenhouse",
-    "target": "sofi",
-    "ok": true,
-    "count": 48,
-    "error": null
+   "ats": "greenhouse",
+   "target": "aqr",
+   "count": 52,
+   "error": null
   },
   {
-    "name": "chime",
-    "ats": "greenhouse",
-    "target": "chime",
-    "ok": true,
-    "count": 66,
-    "error": null
+   "ats": "greenhouse",
+   "target": "betterment",
+   "count": 26,
+   "error": null
   },
   {
-    "name": "toast",
-    "ats": "greenhouse",
-    "target": "toast",
-    "ok": true,
-    "count": 330,
-    "error": null
+   "ats": "greenhouse",
+   "target": "bitgo",
+   "count": 56,
+   "error": null
   },
   {
-    "name": "nerdwallet",
-    "ats": "greenhouse",
-    "target": "nerdwallet",
-    "ok": false,
-    "count": 0,
-    "error": "<HTTPError 404: 'Not Found'>"
+   "ats": "greenhouse",
+   "target": "bridgewater89",
+   "count": 19,
+   "error": null
   },
   {
-    "name": "marqeta",
-    "ats": "greenhouse",
-    "target": "marqeta",
-    "ok": false,
-    "count": 0,
-    "error": "<HTTPError 404: 'Not Found'>"
+   "ats": "greenhouse",
+   "target": "carta",
+   "count": 78,
+   "error": null
   },
   {
-    "name": "airbnb",
-    "ats": "greenhouse",
-    "target": "airbnb",
-    "ok": true,
-    "count": 205,
-    "error": null
+   "ats": "greenhouse",
+   "target": "clearstreet",
+   "count": 39,
+   "error": null
   },
   {
-    "name": "doordash",
-    "ats": "greenhouse",
-    "target": "doordashusa",
-    "ok": true,
-    "count": 441,
-    "error": null
+   "ats": "greenhouse",
+   "target": "coinbase",
+   "count": 285,
+   "error": null
   },
   {
-    "name": "dropbox",
-    "ats": "greenhouse",
-    "target": "dropbox",
-    "ok": true,
-    "count": 35,
-    "error": null
+   "ats": "greenhouse",
+   "target": "drweng",
+   "count": 162,
+   "error": null
   },
   {
-    "name": "figma",
-    "ats": "greenhouse",
-    "target": "figma",
-    "ok": true,
-    "count": 142,
-    "error": null
+   "ats": "greenhouse",
+   "target": "dvtrading",
+   "count": 72,
+   "error": null
   },
   {
-    "name": "carta",
-    "ats": "greenhouse",
-    "target": "carta",
-    "ok": true,
-    "count": 78,
-    "error": null
+   "ats": "greenhouse",
+   "target": "galaxydigitalservices",
+   "count": 55,
+   "error": null
   },
   {
-    "name": "betterment",
-    "ats": "greenhouse",
-    "target": "betterment",
-    "ok": true,
-    "count": 26,
-    "error": null
+   "ats": "greenhouse",
+   "target": "generalatlantic",
+   "count": 13,
+   "error": null
   },
   {
-    "name": "plaid",
-    "ats": "lever",
-    "target": "plaid",
-    "ok": false,
-    "count": 0,
-    "error": "<HTTPError 404: 'Not Found'>"
+   "ats": "greenhouse",
+   "target": "imc",
+   "count": 158,
+   "error": null
   },
   {
-    "name": "palantir",
-    "ats": "lever",
-    "target": "palantir",
-    "ok": true,
-    "count": 304,
-    "error": null
+   "ats": "greenhouse",
+   "target": "janestreet",
+   "count": 220,
+   "error": null
   },
   {
-    "name": "spotify",
-    "ats": "lever",
-    "target": "spotify",
-    "ok": true,
-    "count": 85,
-    "error": null
+   "ats": "greenhouse",
+   "target": "jumptrading",
+   "count": 91,
+   "error": null
   },
   {
-    "name": "wealthfront",
-    "ats": "lever",
-    "target": "wealthfront",
-    "ok": true,
-    "count": 22,
-    "error": null
+   "ats": "greenhouse",
+   "target": "lincolninternational",
+   "count": 37,
+   "error": null
   },
   {
-    "name": "kraken",
-    "ats": "lever",
-    "target": "kraken",
-    "ok": false,
-    "count": 0,
-    "error": null
+   "ats": "greenhouse",
+   "target": "mangroup",
+   "count": 71,
+   "error": null
   },
   {
-    "name": "ramp",
-    "ats": "ashby",
-    "target": "ramp",
-    "ok": true,
-    "count": 173,
-    "error": null
+   "ats": "greenhouse",
+   "target": "point72",
+   "count": 197,
+   "error": null
   },
   {
-    "name": "mercury",
-    "ats": "ashby",
-    "target": "mercury",
-    "ok": false,
-    "count": 0,
-    "error": null
+   "ats": "greenhouse",
+   "target": "robinhood",
+   "count": 152,
+   "error": null
   },
   {
-    "name": "notion",
-    "ats": "ashby",
-    "target": "notion",
-    "ok": true,
-    "count": 152,
-    "error": null
+   "ats": "greenhouse",
+   "target": "schonfeld",
+   "count": 66,
+   "error": null
   },
   {
-    "name": "openai",
-    "ats": "ashby",
-    "target": "openai",
-    "ok": true,
-    "count": 830,
-    "error": null
+   "ats": "greenhouse",
+   "target": "sofi",
+   "count": 48,
+   "error": null
   },
   {
-    "name": "deel",
-    "ats": "ashby",
-    "target": "deel",
-    "ok": false,
-    "count": 0,
-    "error": null
+   "ats": "greenhouse",
+   "target": "towerresearchcapital",
+   "count": 92,
+   "error": null
   },
   {
-    "name": "kraken_ashby",
-    "ats": "ashby",
-    "target": "kraken.com",
-    "ok": true,
-    "count": 90,
-    "error": null
+   "ats": "greenhouse",
+   "target": "virtu",
+   "count": 44,
+   "error": null
   },
   {
-    "name": "plaid_ashby",
-    "ats": "ashby",
-    "target": "plaid",
-    "ok": true,
-    "count": 140,
-    "error": null
+   "ats": "greenhouse",
+   "target": "warburgpincusllc",
+   "count": 5,
+   "error": null
   },
   {
-    "name": "visa",
-    "ats": "smartrecruiters",
-    "target": "Visa",
-    "ok": false,
-    "count": 0,
-    "error": null
+   "ats": "greenhouse",
+   "target": "williamblair",
+   "count": 49,
+   "error": null
   },
   {
-    "name": "bosch",
-    "ats": "smartrecruiters",
-    "target": "BoschGroup",
-    "ok": true,
-    "count": 5102,
-    "error": null
+   "ats": "lever",
+   "target": "wealthfront",
+   "count": 22,
+   "error": null
   },
   {
-    "name": "servicenow",
-    "ats": "smartrecruiters",
-    "target": "ServiceNow",
-    "ok": true,
-    "count": 743,
-    "error": null
+   "ats": "oracle",
+   "target": "eofd.fa.us6.oraclecloud.com|CX_1001",
+   "count": 8696,
+   "error": null
   },
   {
-    "name": "mcdonalds",
-    "ats": "smartrecruiters",
-    "target": "McDonaldsCorporation",
-    "ok": true,
-    "count": 3,
-    "error": null
+   "ats": "oracle",
+   "target": "fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com|CX_1",
+   "count": 579,
+   "error": null
   },
   {
-    "name": "walmart",
-    "ats": "workday",
-    "target": "walmart.wd5.myworkdayjobs.com|walmart|WalmartExternal",
-    "ok": false,
-    "count": 0,
-    "error": "<HTTPError 422: 'Unprocessable Entity'>"
+   "ats": "oracle",
+   "target": "jpmc.fa.oraclecloud.com|CX_1001",
+   "count": 7030,
+   "error": null
   },
   {
-    "name": "nvidia",
-    "ats": "workday",
-    "target": "nvidia.wd5.myworkdayjobs.com|nvidia|NVIDIAExternalCareerSite",
-    "ok": true,
-    "count": 2000,
-    "error": null
+   "ats": "smartrecruiters",
+   "target": "Deloitte6",
+   "count": 277,
+   "error": null
   },
   {
-    "name": "capitalone",
-    "ats": "workday",
-    "target": "capitalone.wd12.myworkdayjobs.com|capitalone|Capital_One",
-    "ok": true,
-    "count": 2059,
-    "error": null
+   "ats": "smartrecruiters",
+   "target": "Experian",
+   "count": 395,
+   "error": null
   },
   {
-    "name": "salesforce",
-    "ats": "workday",
-    "target": "salesforce.wd12.myworkdayjobs.com|salesforce|External_Career_Site",
-    "ok": true,
-    "count": 1549,
-    "error": null
+   "ats": "workday",
+   "target": "abglobal.wd1.myworkdayjobs.com|abglobal|alliancebernsteincareers",
+   "count": 87,
+   "error": null
   },
   {
-    "name": "mastercard",
-    "ats": "workday",
-    "target": "mastercard.wd1.myworkdayjobs.com|mastercard|CorporateCareers",
-    "ok": true,
-    "count": 910,
-    "error": null
+   "ats": "workday",
+   "target": "ameriprise.wd5.myworkdayjobs.com|ameriprise|Ameriprise",
+   "count": 226,
+   "error": null
   },
   {
-    "name": "fidelity",
-    "ats": "workday",
-    "target": "fmr.wd1.myworkdayjobs.com|fmr|FidelityCareers",
-    "ok": true,
-    "count": 859,
-    "error": null
+   "ats": "workday",
+   "target": "aresmgmt.wd1.myworkdayjobs.com|aresmgmt|External",
+   "count": 233,
+   "error": null
   },
   {
-    "name": "bankofamerica",
-    "ats": "workday",
-    "target": "ghr.wd1.myworkdayjobs.com|ghr|Lateral-US",
-    "ok": true,
-    "count": 1996,
-    "error": null
+   "ats": "workday",
+   "target": "baincapital.wd1.myworkdayjobs.com|baincapital|External_Public",
+   "count": 33,
+   "error": null
   },
   {
-    "name": "tyson",
-    "ats": "workday",
-    "target": "tysonfoods.wd5.myworkdayjobs.com|tysonfoods|TSN",
-    "ok": true,
-    "count": 712,
-    "error": null
+   "ats": "workday",
+   "target": "barclays.wd3.myworkdayjobs.com|barclays|External_Career_Site_Barclays",
+   "count": 622,
+   "error": null
   },
   {
-    "name": "jbhunt",
-    "ats": "workday",
-    "target": "jbhunt.wd1.myworkdayjobs.com|jbhunt|JBHuntCareers",
-    "ok": false,
-    "count": 0,
-    "error": "<HTTPError 422: 'Unprocessable Entity'>"
+   "ats": "workday",
+   "target": "bbh.wd5.myworkdayjobs.com|bbh|BBH",
+   "count": 176,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "blackrock.wd1.myworkdayjobs.com|blackrock|BlackRock_Professional",
+   "count": 278,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "blackstone.wd1.myworkdayjobs.com|blackstone|Blackstone_Careers",
+   "count": 127,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "blueowl.wd1.myworkdayjobs.com|blueowl|BlueOwl",
+   "count": 55,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "bmo.wd3.myworkdayjobs.com|bmo|External",
+   "count": 1051,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "brookfield.wd5.myworkdayjobs.com|brookfield|brookfield",
+   "count": 143,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "carlyle.wd1.myworkdayjobs.com|carlyle|Carlyle",
+   "count": 66,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "cibc.wd3.myworkdayjobs.com|cibc|search",
+   "count": 628,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "citi.wd5.myworkdayjobs.com|citi|2",
+   "count": 2000,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "cmegroup.wd1.myworkdayjobs.com|cmegroup|cme_careers",
+   "count": 71,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "db.wd3.myworkdayjobs.com|db|DBWebsite",
+   "count": 1141,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "factset.wd108.myworkdayjobs.com|factset|FactSetCareers",
+   "count": 104,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "fifththird.wd5.myworkdayjobs.com|fifththird|53careers",
+   "count": 986,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "hl.wd1.myworkdayjobs.com|hl|Campus",
+   "count": 50,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "huntington.wd12.myworkdayjobs.com|huntington|HNBcareers",
+   "count": 704,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "invesco.wd1.myworkdayjobs.com|invesco|IVZ",
+   "count": 218,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "keybank.wd5.myworkdayjobs.com|keybank|External_Career_Site",
+   "count": 570,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "manulife.wd3.myworkdayjobs.com|manulife|MFCJH_Jobs",
+   "count": 613,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "mq.wd3.myworkdayjobs.com|mq|CareersatMQ",
+   "count": 19,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "ms.wd5.myworkdayjobs.com|ms|External",
+   "count": 1209,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "mtb.wd5.myworkdayjobs.com|mtb|MTB",
+   "count": 729,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "mufgub.wd3.myworkdayjobs.com|mufgub|MUFG-Careers",
+   "count": 671,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "nasdaq.wd1.myworkdayjobs.com|nasdaq|Global_External_Site",
+   "count": 156,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "nb.wd1.myworkdayjobs.com|nb|NBCareers",
+   "count": 92,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "ntrs.wd1.myworkdayjobs.com|ntrs|northerntrust",
+   "count": 642,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "oaktree.wd1.myworkdayjobs.com|oaktree|Oaktree",
+   "count": 54,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "pimco.wd1.myworkdayjobs.com|pimco|pimco-careers",
+   "count": 161,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "pjtpartners.wd1.myworkdayjobs.com|pjtpartners|Careers",
+   "count": 55,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "pnc.wd5.myworkdayjobs.com|pnc|External",
+   "count": 2000,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "pwc.wd3.myworkdayjobs.com|pwc|Global_Experienced_Careers",
+   "count": 3773,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "raymondjames.wd1.myworkdayjobs.com|raymondjames|RaymondJamesCareers",
+   "count": 293,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "rbc.wd3.myworkdayjobs.com|rbc|RBCGLOBAL1",
+   "count": 807,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "regions.wd5.myworkdayjobs.com|regions|Regions_Careers",
+   "count": 492,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "santander.wd3.myworkdayjobs.com|santander|SantanderCareers",
+   "count": 1064,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "spgi.wd5.myworkdayjobs.com|spgi|SPGI_Careers",
+   "count": 348,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "statestreet.wd1.myworkdayjobs.com|statestreet|Global",
+   "count": 1176,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "sunlife.wd3.myworkdayjobs.com|sunlife|Experienced-Jobs",
+   "count": 288,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "synchronyfinancial.wd5.myworkdayjobs.com|synchronyfinancial|careers",
+   "count": 25,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "td.wd3.myworkdayjobs.com|td|TD_Bank_Careers",
+   "count": 1772,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "tiaa.wd1.myworkdayjobs.com|tiaa|Search",
+   "count": 157,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "troweprice.wd5.myworkdayjobs.com|troweprice|TRowePrice",
+   "count": 135,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "truist.wd1.myworkdayjobs.com|truist|Careers",
+   "count": 1393,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "usaa.wd1.myworkdayjobs.com|usaa|USAAJOBSWD",
+   "count": 215,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "usbank.wd1.myworkdayjobs.com|usbank|US_Bank_Careers",
+   "count": 1229,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "vanguard.wd5.myworkdayjobs.com|vanguard|vanguard_external",
+   "count": 328,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "wf.wd1.myworkdayjobs.com|wf|WellsFargoJobs",
+   "count": 1555,
+   "error": null
   }
-]
+ ],
+ "failed": [
+  {
+   "ats": "ashby",
+   "target": "addepar",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "ashby",
+   "target": "arcesium",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "ashby",
+   "target": "brex",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "ashby",
+   "target": "carta",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "ashby",
+   "target": "clearstreet",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "ashby",
+   "target": "mercury",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "greenhouse",
+   "target": "addepar",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "antares",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "apollo",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "greenhouse",
+   "target": "ares",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "bain",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "baincapital",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "balyasny",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "blueowl",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "cantorfitzgerald",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "carlyle",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "centerview",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "chathamfinancial",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "citadel",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "cowen",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "evercore",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "fidelity",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "golubcapital",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "greenhill",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "guggenheimpartners",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "hamiltonlane",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "harriswilliams",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "houlihanlokey",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "hudsonrivertrading",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "jefferies",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "lazard",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "marketaxess",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "moelis",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "morningstar",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "oaktree",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "oldmissioncapital",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "oppenheimer",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "optiver",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "greenhouse",
+   "target": "perellaweinberg",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "pipersandler",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "pitchbook",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "pjtpartners",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "raymondjames",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "sig",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "silverlake",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "stephens",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "stepstonegroup",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "stifel",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "stonex",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "thomabravo",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "tpg",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "tradeweb",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "twosigma",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "vistaequitypartners",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "wealthfront",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "greenhouse",
+   "target": "wolverinetrading",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "addepar",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "arcesium",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "belvederetrading",
+   "count": 0,
+   "error": "TimeoutError('The read operation timed out')"
+  },
+  {
+   "ats": "lever",
+   "target": "blueowl",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "clearstreet",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "generalatlantic",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "gtsx",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "hamiltonlane",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "lincolninternational",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "moelis",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "point72",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "lever",
+   "target": "stepstone",
+   "count": 0,
+   "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+   "ats": "oracle",
+   "target": "hdpc.fa.us2.oraclecloud.com",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Allianz",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "BNPParibas",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Barclays",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "CreditAgricole",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Deloitte",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Deloitte2",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "DeloitteUS",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "EY",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Equifax",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Evercore",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Jefferies",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "KPMG",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "KPMGUS",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Lazard",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Macquarie",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Mizuho",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "MoodysCorporation",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Natixis",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Nomura",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "PwC",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "RothschildCo",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "SPGlobal",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "SocieteGenerale",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "UBS",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "smartrecruiters",
+   "target": "Visa",
+   "count": 0,
+   "error": null
+  },
+  {
+   "ats": "workday",
+   "target": "aexp",
+   "count": 0,
+   "error": "aexp.wd503.myworkdayjobs.com/AEXP: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "apollo",
+   "count": 0,
+   "error": "apollo.wd503.myworkdayjobs.com/Apollo: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "bny",
+   "count": 0,
+   "error": "bny.wd503.myworkdayjobs.com/BNY: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "bnymellon",
+   "count": 0,
+   "error": "bnymellon.wd503.myworkdayjobs.com/BNY: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "cantor",
+   "count": 0,
+   "error": "cantor.wd503.myworkdayjobs.com/Cantor: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "citizensbank",
+   "count": 0,
+   "error": "citizensbank.wd503.myworkdayjobs.com/Citizens: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "deloitte",
+   "count": 0,
+   "error": "deloitte.wd503.myworkdayjobs.com/Deloitte: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "discover",
+   "count": 0,
+   "error": "discover.wd503.myworkdayjobs.com/Discover: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "evercore",
+   "count": 0,
+   "error": "evercore.wd503.myworkdayjobs.com/Evercore: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "firstcitizens",
+   "count": 0,
+   "error": "firstcitizens.wd503.myworkdayjobs.com/FCB: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "franklintempleton",
+   "count": 0,
+   "error": "franklintempleton.wd503.myworkdayjobs.com/Primary-External-1: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "generalatlantic",
+   "count": 0,
+   "error": "generalatlantic.wd503.myworkdayjobs.com/GA: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "goldmansachs",
+   "count": 0,
+   "error": "goldmansachs.wd503.myworkdayjobs.com/GS: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "guggenheim",
+   "count": 0,
+   "error": "guggenheim.wd503.myworkdayjobs.com/Guggenheim: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "hamiltonlane",
+   "count": 0,
+   "error": "hamiltonlane.wd503.myworkdayjobs.com/HL: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "harriswilliams",
+   "count": 0,
+   "error": "harriswilliams.wd503.myworkdayjobs.com/HW: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "houlihanlokey",
+   "count": 0,
+   "error": "houlihanlokey.wd503.myworkdayjobs.com/HL: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "hsbc",
+   "count": 0,
+   "error": "hsbc.wd503.myworkdayjobs.com/HSBC: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "ice",
+   "count": 0,
+   "error": "ice.wd503.myworkdayjobs.com/ICE: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "janushenderson",
+   "count": 0,
+   "error": "janushenderson.wd503.myworkdayjobs.com/Careers: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "jefferies",
+   "count": 0,
+   "error": "jefferies.wd503.myworkdayjobs.com/Jefferies: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "jpmc",
+   "count": 0,
+   "error": "jpmc.wd503.myworkdayjobs.com/JPMC: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "kkr",
+   "count": 0,
+   "error": "kkr.wd503.myworkdayjobs.com/KKR: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "kpmg",
+   "count": 0,
+   "error": "kpmg.wd503.myworkdayjobs.com/KPMG: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "lazard",
+   "count": 0,
+   "error": "lazard.wd503.myworkdayjobs.com/Lazard: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "lincolninternational",
+   "count": 0,
+   "error": "lincolninternational.wd503.myworkdayjobs.com/Lincoln: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "lordabbett",
+   "count": 0,
+   "error": "lordabbett.wd503.myworkdayjobs.com/LordAbbett: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "lpl",
+   "count": 0,
+   "error": "lpl.wd503.myworkdayjobs.com/External: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "macquarie",
+   "count": 0,
+   "error": "macquarie.wd503.myworkdayjobs.com/CareersatMQ: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "mizuho",
+   "count": 0,
+   "error": "mizuho.wd503.myworkdayjobs.com/Mizuho: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "mlp",
+   "count": 0,
+   "error": "mlp.wd503.myworkdayjobs.com/mlpcareers: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "moelis",
+   "count": 0,
+   "error": "moelis.wd503.myworkdayjobs.com/Moelis: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "moodys",
+   "count": 0,
+   "error": "moodys.wd503.myworkdayjobs.com/Moodys: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "msci",
+   "count": 0,
+   "error": "msci.wd503.myworkdayjobs.com/MSCI: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "nomura",
+   "count": 0,
+   "error": "nomura.wd503.myworkdayjobs.com/Nomura: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "nuveen",
+   "count": 0,
+   "error": "nuveen.wd503.myworkdayjobs.com/Nuveen: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "pipersandler",
+   "count": 0,
+   "error": "pipersandler.wd503.myworkdayjobs.com/PiperSandler: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "principal",
+   "count": 0,
+   "error": "principal.wd503.myworkdayjobs.com/Principal: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "rwbaird",
+   "count": 0,
+   "error": "rwbaird.wd503.myworkdayjobs.com/BairdCareers: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "schwab",
+   "count": 0,
+   "error": "schwab.wd503.myworkdayjobs.com/External: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "stephens",
+   "count": 0,
+   "error": "stephens.wd503.myworkdayjobs.com/Stephens: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "stepstonegroup",
+   "count": 0,
+   "error": "stepstonegroup.wd503.myworkdayjobs.com/StepStone: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "stifel",
+   "count": 0,
+   "error": "stifel.wd503.myworkdayjobs.com/Search: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "stonex",
+   "count": 0,
+   "error": "stonex.wd503.myworkdayjobs.com/StoneX: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "tpg",
+   "count": 0,
+   "error": "tpg.wd503.myworkdayjobs.com/TPG: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "ubs",
+   "count": 0,
+   "error": "ubs.wd503.myworkdayjobs.com/UBS: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "voya",
+   "count": 0,
+   "error": "voya.wd503.myworkdayjobs.com/VoyaCareers: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "warburgpincus",
+   "count": 0,
+   "error": "warburgpincus.wd503.myworkdayjobs.com/WP: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "wellington",
+   "count": 0,
+   "error": "wellington.wd503.myworkdayjobs.com/Wellington: <HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+   "ats": "workday",
+   "target": "williamblair",
+   "count": 0,
+   "error": "williamblair.wd503.myworkdayjobs.com/WilliamBlair: <HTTPError 422: 'Unprocessable Entity'>"
+  }
+ ]
+}
