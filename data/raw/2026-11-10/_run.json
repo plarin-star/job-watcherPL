@@ -1,5 +1,5 @@
 {
-  "run_time": "2026-11-10T18:56:39Z",
+  "run_time": "2026-11-10T18:59:57Z",
   "date": "2026-11-10",
   "sources": [
     {
@@ -81,6 +81,18 @@
       "error": null
     },
     {
+      "name": "rbc",
+      "ok": true,
+      "count": 809,
+      "error": null
+    },
+    {
+      "name": "bmo",
+      "ok": true,
+      "count": 1050,
+      "error": null
+    },
+    {
       "name": "blackrock",
       "ok": true,
       "count": 278,
@@ -120,6 +132,24 @@
       "name": "point72",
       "ok": true,
       "count": 197,
+      "error": null
+    },
+    {
+      "name": "ares",
+      "ok": true,
+      "count": 233,
+      "error": null
+    },
+    {
+      "name": "invesco",
+      "ok": true,
+      "count": 218,
+      "error": null
+    },
+    {
+      "name": "vanguard",
+      "ok": true,
+      "count": 327,
       "error": null
     }
   ]

@@ -1,8 +1,8 @@
 {
-  "run_time": "2026-11-10T18:56:39Z",
+  "run_time": "2026-11-10T18:59:57Z",
   "first_run_date": "2026-11-10",
   "days_with_success": 1,
-  "open": 10843,
+  "open": 13480,
   "new_today": 0,
   "removed_today": 0,
   "sources": [
@@ -72,6 +72,16 @@
       "count": 37
     },
     {
+      "name": "rbc",
+      "ok": true,
+      "count": 809
+    },
+    {
+      "name": "bmo",
+      "ok": true,
+      "count": 1050
+    },
+    {
       "name": "blackrock",
       "ok": true,
       "count": 278
@@ -105,6 +115,21 @@
       "name": "point72",
       "ok": true,
       "count": 197
+    },
+    {
+      "name": "ares",
+      "ok": true,
+      "count": 233
+    },
+    {
+      "name": "invesco",
+      "ok": true,
+      "count": 218
+    },
+    {
+      "name": "vanguard",
+      "ok": true,
+      "count": 327
     }
   ]
 }
