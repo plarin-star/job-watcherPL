@@ -2,10 +2,6 @@ name: Probe sources
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - tools/probe_sources.py
 
 permissions:
   contents: write

@@ -15,6 +15,7 @@ import gzip
 import json
 import shutil
 import time
+import urllib.parse
 import urllib.request
 
 from .normalize import convert
@@ -90,7 +91,66 @@ def fetch_workday(source):
     return {"total": total, "jobPostings": postings}
 
 
+def fetch_oracle(source):
+    """Oracle Recruiting Cloud. Paginated: 100 postings per request, merged into one payload.
+
+    A board with more than 5,000 postings is requested with the source's search term.
+    """
+    finder = f"findReqs;siteNumber={source['site']}"
+    if source.get("search_term"):
+        finder += f",keyword=%22{urllib.parse.quote(source['search_term'])}%22"
+    reqs, offset, total = [], 0, None
+    while True:
+        page = get_json(
+            f"https://{source['host']}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true"
+            f"&expand=requisitionList&finder={finder},sortBy=POSTING_DATES_DESC,limit=100,offset={offset}"
+        )
+        item = (page.get("items") or [{}])[0]
+        if total is None:
+            total = item.get("TotalJobsCount", 0)
+        items = item.get("requisitionList") or []
+        reqs.extend(items)
+        offset += len(items)
+        if not items or offset >= total or offset >= MAX_POSTINGS:
+            break
+    return {"TotalJobsCount": total, "search_term": source.get("search_term", ""), "requisitionList": reqs}
+
+
+GS_QUERY = (
+    "query GetRoles($searchQueryInput: RoleSearchQueryInput!) { roleSearch(searchQueryInput: $searchQueryInput) "
+    "{ totalCount items { roleId corporateTitle jobTitle jobFunction division "
+    "locations { primary state country city } externalSource { sourceId } } } }"
+)
+
+
+def fetch_goldman(source):
+    """Goldman Sachs' own careers API. Paginated: 100 roles per request, merged."""
+    roles, page_number, total = [], 0, None
+    while True:
+        page = get_json("https://api-higher.gs.com/gateway/api/v1/graphql", {
+            "operationName": "GetRoles", "query": GS_QUERY,
+            "variables": {"searchQueryInput": {
+                "page": {"pageSize": 100, "pageNumber": page_number},
+                "sort": {"sortStrategy": "POSTED_DATE", "sortOrder": "DESC"},
+                "filters": [], "experiences": ["PROFESSIONAL", "EARLY_CAREER"], "searchTerm": "",
+            }},
+        })
+        if page.get("errors"):
+            raise RuntimeError(json.dumps(page["errors"])[:200])
+        result = page["data"]["roleSearch"]
+        if total is None:
+            total = result.get("totalCount", 0)
+        items = result.get("items") or []
+        roles.extend(items)
+        page_number += 1
+        if not items or len(roles) >= total or len(roles) >= MAX_POSTINGS:
+            break
+    return {"totalCount": total, "items": roles}
+
+
 FETCHERS = {
+    "oracle": fetch_oracle,
+    "goldman": fetch_goldman,
     "greenhouse": fetch_greenhouse,
     "lever": fetch_lever,
     "ashby": fetch_ashby,

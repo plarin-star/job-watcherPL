@@ -107,6 +107,45 @@ def test_workday():
     assert rows[1]["posted_date"] == ""  # "30+ days ago" has no exact date
 
 
+def test_oracle():
+    raw = {"TotalJobsCount": 1, "requisitionList": [{
+        "Id": "210587260", "Title": "Investment Banking - Analyst", "PostedDate": "2026-11-07",
+        "PrimaryLocation": "New York, NY, United States", "JobFunction": "Investment Banking",
+        "JobFamily": "Banking",
+    }]}
+    source = src("oracle", host="acme.fa.oraclecloud.com", site="CX_1001")
+    rows = convert(raw, source, DAY)
+    check_columns(rows)
+    assert rows[0]["posting_id"] == "acme:210587260"
+    assert rows[0]["title"] == "Investment Banking - Analyst"
+    assert rows[0]["location"] == "New York, NY, United States"
+    assert rows[0]["department"] == "Investment Banking"
+    assert rows[0]["posted_date"] == "2026-11-07"
+    assert rows[0]["url"] == "https://acme.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210587260"
+
+
+def test_goldman_adds_level_to_title():
+    raw = {"totalCount": 2, "items": [
+        {"roleId": "188640_GS_EARLY_CAREER", "jobTitle": "Global Banking & Markets, Investment Banking",
+         "corporateTitle": "Analyst", "division": "Global Banking & Markets",
+         "locations": [{"primary": True, "city": "Dallas", "state": "TX", "country": "United States"},
+                       {"primary": False, "city": "New York", "state": "NY", "country": "United States"}],
+         "externalSource": {"sourceId": "188640"}},
+        {"roleId": "9_GS", "jobTitle": "Equity Research Associate", "corporateTitle": "Associate",
+         "locations": [], "externalSource": {"sourceId": "9"}},
+    ]}
+    rows = convert(raw, src("goldman"), DAY)
+    check_columns(rows)
+    assert rows[0]["posting_id"] == "acme:188640_GS_EARLY_CAREER"
+    assert rows[0]["title"] == "Global Banking & Markets, Investment Banking - Analyst"
+    assert rows[0]["location"] == "Dallas, TX, United States (+1 more)"
+    assert rows[0]["department"] == "Global Banking & Markets"
+    assert rows[0]["posted_date"] == ""  # not provided
+    assert rows[0]["url"] == "https://higher.gs.com/roles/188640"
+    assert rows[1]["title"] == "Equity Research Associate"  # level already in the title
+    assert rows[1]["location"] == ""
+
+
 def test_workday_posted_date_words():
     assert workday_posted_date("Posted Today", DAY) == "2026-11-10"
     assert workday_posted_date("Posted Yesterday", DAY) == "2026-11-09"

@@ -148,7 +148,50 @@ def from_workday(raw, source, snapshot_date):
     return rows
 
 
+def from_oracle(raw, source, snapshot_date):
+    """Oracle Recruiting Cloud (requisitionList merged from every page)."""
+    rows = []
+    base = f"https://{source['host']}/hcmUI/CandidateExperience/en/sites/{source['site']}/job"
+    for job in raw.get("requisitionList", []):
+        rows.append(_row(
+            source, job.get("Id"), job.get("Title"), job.get("PrimaryLocation"),
+            job.get("JobFunction") or job.get("JobFamily"),
+            iso_to_utc_date(job.get("PostedDate")), f"{base}/{job.get('Id')}",
+        ))
+    return rows
+
+
+def from_goldman(raw, source, snapshot_date):
+    """Goldman Sachs' own careers API (higher.gs.com).
+
+    Goldman keeps the level ("Analyst", "Associate", "Vice President") in a separate
+    corporateTitle field, so it is added to the title when the title does not have it.
+    The API gives no posted date.
+    """
+    rows = []
+    for job in raw.get("items", []):
+        title = _clean(job.get("jobTitle"))
+        level = _clean(job.get("corporateTitle"))
+        if level and level.lower() not in title.lower():
+            title = f"{title} - {level}"
+        locs = job.get("locations") or []
+        location = ""
+        if locs:
+            first = next((l for l in locs if l.get("primary")), locs[0])
+            location = ", ".join(p for p in [first.get("city"), first.get("state"), first.get("country")] if p)
+            if len(locs) > 1:
+                location += f" (+{len(locs) - 1} more)"
+        source_id = (job.get("externalSource") or {}).get("sourceId") or job.get("roleId")
+        rows.append(_row(
+            source, job.get("roleId"), title, location, job.get("division"), "",
+            f"https://higher.gs.com/roles/{source_id}",
+        ))
+    return rows
+
+
 CONVERTERS = {
+    "oracle": from_oracle,
+    "goldman": from_goldman,
     "greenhouse": from_greenhouse,
     "lever": from_lever,
     "ashby": from_ashby,
