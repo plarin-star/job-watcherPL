@@ -1,6 +1,6 @@
 """The watch list: every employer job board the pipeline reads, with its applicant tracking system.
 
-Twenty employers for an investment / banking analyst search: big-name banks and firms,
+Twenty-five employers for an investment / banking analyst search: big-name banks and firms,
 middle-market and boutique investment banks, and asset managers.
 
 Each board returns JSON to a request made with no login. JPMorgan Chase's board returns
@@ -49,6 +49,8 @@ SOURCES = [
     _wd("pjtpartners", "PJT Partners", "pjtpartners.wd1.myworkdayjobs.com", "pjtpartners", "Careers"),
     _gh("williamblair", "William Blair"),
     _gh("lincolninternational", "Lincoln International"),
+    _wd("rbc", "RBC", "rbc.wd3.myworkdayjobs.com", "rbc", "RBCGLOBAL1"),
+    _wd("bmo", "BMO", "bmo.wd3.myworkdayjobs.com", "bmo", "External"),
     # Asset managers and private equity
     _wd("blackrock", "BlackRock", "blackrock.wd1.myworkdayjobs.com", "blackrock", "BlackRock_Professional"),
     _wd("blackstone", "Blackstone", "blackstone.wd1.myworkdayjobs.com", "blackstone", "Blackstone_Careers"),
@@ -57,6 +59,9 @@ SOURCES = [
     _wd("pimco", "PIMCO", "pimco.wd1.myworkdayjobs.com", "pimco", "pimco-careers"),
     _wd("carlyle", "Carlyle", "carlyle.wd1.myworkdayjobs.com", "carlyle", "Carlyle"),
     _gh("point72", "Point72"),
+    _wd("ares", "Ares Management", "aresmgmt.wd1.myworkdayjobs.com", "aresmgmt", "External"),
+    _wd("invesco", "Invesco", "invesco.wd1.myworkdayjobs.com", "invesco", "IVZ"),
+    _wd("vanguard", "Vanguard", "vanguard.wd5.myworkdayjobs.com", "vanguard", "vanguard_external"),
 ]
 
 SOURCES_BY_NAME = {s["name"]: s for s in SOURCES}
