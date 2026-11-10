@@ -1,9 +1,8 @@
 """Probe candidate job boards and report which ones return JSON with no login.
 
-Used while choosing the watch list. Writes tools/probe_results.json with, for each
-candidate that answered, its applicant tracking system, the exact target to use,
-and how many postings the board reports. Candidates that never answered are
-listed under "failed".
+Used while choosing the watch list. Each candidate can have several guesses
+(variants); the first one that answers with postings wins. Writes
+tools/probe_results.json.
 
 Run: python tools/probe_sources.py
 """
@@ -11,175 +10,177 @@ Run: python tools/probe_sources.py
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import json
-import re
+import urllib.error
 import urllib.request
 
 HEADERS = {"User-Agent": "job-watcher-student-project/1.0", "Accept": "application/json"}
-WD_NUMBERS = [1, 5, 3, 12, 2, 10, 101, 103, 108, 501, 503]
 
-GREENHOUSE = [
-    "point72", "bridgewater89", "aqr", "generalatlantic", "blueowl", "moelis", "lincolninternational",
-    "pjtpartners", "perellaweinberg", "guggenheimpartners", "williamblair", "hamiltonlane",
-    "stepstonegroup", "apollo", "carlyle", "janestreet", "twosigma", "hudsonrivertrading", "drweng",
-    "jumptrading", "imc", "optiver", "akunacapital", "virtu", "clearstreet", "schonfeld", "balyasny",
-    "lazard", "evercore", "houlihanlokey", "jefferies", "stephens", "raymondjames", "pipersandler",
-    "oppenheimer", "stifel", "citadel", "towerresearchcapital", "sig", "mangroup", "warburgpincusllc",
-    "tpg", "bain", "baincapital", "silverlake", "thomabravo", "vistaequitypartners", "ares",
-    "oaktree", "golubcapital", "antares", "cantorfitzgerald", "stonex", "marketaxess", "tradeweb",
-    "morningstar", "pitchbook", "addepar", "carta", "robinhood", "coinbase", "sofi", "betterment",
-    "wealthfront", "galaxydigitalservices", "bitgo", "fidelity", "dvtrading", "oldmissioncapital",
-    "wolverinetrading", "chathamfinancial", "harriswilliams", "centerview", "greenhill", "cowen",
-]
-LEVER = ["wealthfront", "moelis", "lincolninternational", "point72", "blueowl", "hamiltonlane",
-         "stepstone", "generalatlantic", "addepar", "arcesium", "belvederetrading", "gtsx", "clearstreet"]
-ASHBY = ["ramp", "kraken.com", "plaid", "clearstreet", "addepar", "carta", "mercury", "brex", "arcesium"]
-SMARTRECRUITERS = ["Deloitte6", "Deloitte", "Deloitte2", "DeloitteUS", "KPMG", "KPMGUS", "EY", "PwC",
-                   "Jefferies", "Evercore", "Lazard", "Nomura", "Macquarie", "UBS", "Barclays",
-                   "SocieteGenerale", "BNPParibas", "CreditAgricole", "Natixis", "RothschildCo",
-                   "Visa", "Experian", "Equifax", "SPGlobal", "MoodysCorporation", "Mizuho", "Allianz"]
-# Workday: tenant -> career site names to try (the site at the board's root is also tried)
-WORKDAY = {
-    "ms": ["External"], "citi": ["2"], "wf": ["WellsFargoJobs"], "blackrock": ["BlackRock_Professional"],
-    "blackstone": ["Blackstone_Careers"], "kkr": ["KKR_Careers", "KKR"], "raymondjames": ["RaymondJamesCareers"],
-    "jefferies": ["jefferies", "Jefferies"], "hl": ["HL", "Experienced", "Campus"], "lazard": ["Lazard"],
-    "pjtpartners": ["PJT", "Careers"], "stifel": ["Stifel", "Search"], "rwbaird": ["Baird", "BairdCareers"],
-    "stephens": ["Stephens"], "troweprice": ["TRowePrice"], "ntrs": ["northerntrust"],
-    "statestreet": ["Global"], "invesco": ["IVZ"], "franklintempleton": ["Primary-External-1"],
-    "pimco": ["pimco-careers"], "vanguard": ["vanguard_external"], "aresmgmt": ["External"],
-    "mlp": ["mlpcareers"], "nb": ["NBCareers"], "tiaa": ["Search"], "wellington": ["Wellington"],
-    "db": ["DBWebsite"], "rbc": ["RBCGLOBAL1"], "bmo": ["External"], "td": ["TD_Bank_Careers"],
-    "mq": ["CareersatMQ"], "pwc": ["Global_Experienced_Careers"], "carlyle": ["Carlyle"], "tpg": ["TPG"],
-    "oaktree": ["Oaktree"], "brookfield": ["brookfield"], "apollo": ["Apollo"], "williamblair": ["WilliamBlair"],
-    "pipersandler": ["PiperSandler"], "guggenheim": ["Guggenheim"], "evercore": ["Evercore"],
-    "moelis": ["Moelis"], "pnc": ["External"], "truist": ["Careers"], "usbank": ["US_Bank_Careers"],
-    "abglobal": ["alliancebernsteincareers"], "lordabbett": ["LordAbbett"], "janushenderson": ["Careers"],
-    "nomura": ["Nomura"], "mizuho": ["Mizuho"], "mufgub": ["MUFG-Careers"], "cibc": ["search"],
-    "keybank": ["External_Career_Site"], "fifththird": ["53careers"], "citizensbank": ["Citizens"],
-    "cantor": ["Cantor"], "stonex": ["StoneX"], "lpl": ["External"], "ameriprise": ["Ameriprise"],
-    "principal": ["Principal"], "nuveen": ["Nuveen"], "deloitte": ["Deloitte"], "kpmg": ["KPMG"],
-    "barclays": ["External_Career_Site_Barclays"], "ubs": ["UBS"], "hsbc": ["HSBC"],
-    "santander": ["SantanderCareers"], "bbh": ["BBH"], "bnymellon": ["BNY"], "bny": ["BNY"],
-    "goldmansachs": ["GS"], "jpmc": ["JPMC"], "msci": ["MSCI"], "spgi": ["SPGI_Careers"],
-    "moodys": ["Moodys"], "factset": ["FactSetCareers"], "nasdaq": ["Global_External_Site"],
-    "cmegroup": ["cme_careers"], "ice": ["ICE"], "schwab": ["External"], "voya": ["VoyaCareers"],
-    "manulife": ["MFCJH_Jobs"], "sunlife": ["Experienced-Jobs"], "macquarie": ["CareersatMQ"],
-    "lincolninternational": ["Lincoln"], "harriswilliams": ["HW"], "houlihanlokey": ["HL"],
-    "generalatlantic": ["GA"], "warburgpincus": ["WP"], "baincapital": ["External_Public"],
-    "hamiltonlane": ["HL"], "stepstonegroup": ["StepStone"], "blueowl": ["BlueOwl"],
-    "regions": ["Regions_Careers"], "huntington": ["HNBcareers"], "mtb": ["MTB"], "firstcitizens": ["FCB"],
-    "synchronyfinancial": ["careers"], "discover": ["Discover"], "aexp": ["AEXP"], "usaa": ["USAAJOBSWD"],
+GS_QUERY = (
+    "query GetRoles($searchQueryInput: RoleSearchQueryInput!) { roleSearch(searchQueryInput: $searchQueryInput) "
+    "{ totalCount items { roleId corporateTitle jobTitle jobFunction locations { primary state country city } "
+    "division externalSource { sourceId } } } }"
+)
+
+
+def wd(tenant, nums, sites, host=None):
+    return [("workday", f"{host or f'{tenant}.wd{n}.myworkdayjobs.com'}|{tenant}|{s}") for n in nums for s in sites]
+
+
+def gh(*slugs):
+    return [("greenhouse", s) for s in slugs]
+
+
+def oracle(host, *sites):
+    return [("oracle", f"{host}|{s}") for s in sites]
+
+
+GENERIC = ["External", "Careers", "External_Career_Site", "Experienced", "Search"]
+
+CANDIDATES = {
+    # Big names
+    "goldmansachs": [("goldman", "")],
+    "jpmorgan": oracle("jpmc.fa.oraclecloud.com", "CX_1001", "CX_1002"),
+    "morganstanley": wd("ms", [5], ["External", "Experienced"]),
+    "citi": wd("citi", [5], ["2", "External"]),
+    "wellsfargo": wd("wf", [1], ["WellsFargoJobs"], host="wd1.myworkdaysite.com"),
+    "deloitte": [("smartrecruiters", "Deloitte6"), ("smartrecruiters", "Deloitte"), ("smartrecruiters", "DeloitteUS")]
+    + wd("deloitte", [1, 5], ["External", "Careers"]),
+    "pwc": wd("pwc", [3], ["Global_Experienced_Careers", "US_Entry_Level_Careers"]),
+    "kpmg": wd("kpmg", [1, 5], ["External", "KPMG_Careers"]) + [("smartrecruiters", "KPMG")],
+    "ubs": wd("ubs", [3], GENERIC),
+    "barclays": wd("barclays", [3], ["External_Career_Site_Barclays", "External"]),
+    "deutschebank": wd("db", [3], ["DBWebsite"]),
+    "rbc": wd("rbc", [3], ["RBCGLOBAL1"]),
+    "bmo": wd("bmo", [3], ["External"]),
+    "td": wd("td", [3], ["TD_Bank_Careers"]),
+    "bny": oracle("eofe.fa.us2.oraclecloud.com", "CX_1001", "CX_1", "CX"),
+    "usbank": wd("usbank", [1], ["US_Bank_Careers"]),
+    "pnc": wd("pnc", [5], ["External"]),
+    "truist": wd("truist", [1], ["Careers"]),
+    "keybank": wd("keybank", [5], ["External_Career_Site"]),
+    "schwab": wd("schwab", [1, 5], GENERIC),
+    "nomura": wd("nomura", [1, 3, 5], GENERIC + ["Nomura"]),
+    # Middle-market and boutique investment banks
+    "jefferies": wd("jefferies", [1, 5], GENERIC + ["Jefferies"]) + gh("jefferies"),
+    "raymondjames": wd("raymondjames", [1], ["RaymondJamesCareers", "External", "Careers"]),
+    "stifel": wd("stifel", [1, 5], GENERIC + ["Stifel"]),
+    "baird": wd("rwbaird", [1, 5], GENERIC + ["Baird"]) + wd("baird", [1, 5], GENERIC),
+    "williamblair": wd("williamblair", [1, 5], GENERIC + ["WilliamBlair"]) + gh("williamblair"),
+    "pipersandler": wd("pipersandler", [1, 5], GENERIC + ["PiperSandler", "Piper_Sandler"]),
+    "houlihanlokey": wd("hl", [1], ["Campus", "Experienced", "External"]) + wd("houlihanlokey", [1, 5], GENERIC),
+    "stephens": wd("stephens", [1, 5], GENERIC + ["Stephens"]),
+    "moelis": wd("moelis", [1, 5], GENERIC + ["Moelis"]) + gh("moelis"),
+    "evercore": wd("evercore", [1, 5], GENERIC) + gh("evercore"),
+    "lazard": wd("lazard", [1, 5], GENERIC) + gh("lazard"),
+    "guggenheim": wd("guggenheimpartners", [1, 5], GENERIC + ["GP", "Guggenheim"]) + gh("guggenheimpartners"),
+    "pjt": gh("pjtpartners", "pjt") + wd("pjtpartners", [1, 5], GENERIC),
+    "perellaweinberg": gh("pwp", "perellaweinberg", "pwpartners"),
+    "centerview": gh("centerview", "centerviewpartners"),
+    "lincolninternational": wd("lincolninternational", [1, 5], GENERIC) + gh("lincolninternational"),
+    "harriswilliams": gh("harriswilliams") + wd("harriswilliams", [1, 5], GENERIC),
+    "cantor": wd("cantor", [1, 5], GENERIC) + gh("cantorfitzgerald"),
+    "oppenheimer": wd("opco", [1, 5], GENERIC) + wd("oppenheimer", [1, 5], GENERIC),
+    # Asset managers and private equity
+    "blackrock": wd("blackrock", [1], ["BlackRock_Professional"]),
+    "blackstone": wd("blackstone", [1], ["Blackstone_Careers", "Blackstone_Campus_Careers"]),
+    "kkr": wd("kkr", [1, 5], GENERIC + ["KKR", "KKR_Careers"]) + gh("kkr"),
+    "carlyle": wd("carlyle", [1, 5], GENERIC + ["Carlyle"]) + gh("carlyle"),
+    "apollo": wd("apollo", [1, 5], GENERIC + ["Apollo"]) + gh("apollo", "apolloglobal"),
+    "ares": wd("aresmgmt", [1], ["External"]),
+    "troweprice": wd("troweprice", [5], ["TRowePrice"]),
+    "northerntrust": wd("ntrs", [1], ["northerntrust"]),
+    "statestreet": wd("statestreet", [1], ["Global"]),
+    "invesco": wd("invesco", [1], ["IVZ"]),
+    "franklintempleton": wd("franklintempleton", [5], ["Primary-External-1"]),
+    "pimco": wd("pimco", [1], ["pimco-careers"]),
+    "vanguard": wd("vanguard", [5], ["vanguard_external"]),
+    "wellington": wd("wellington", [5, 1], GENERIC + ["Wellington"]) + gh("wellington"),
+    "nuveen": wd("tiaa", [1], ["Search"]),
+    "point72": gh("point72"),
+    "aqr": gh("aqr"),
+    "bridgewater": gh("bridgewater89", "bridgewater"),
+    "generalatlantic": gh("generalatlantic"),
+    "citadel": gh("citadel", "citadelsecurities"),
+    "drw": gh("drweng", "drw"),
+    "jumptrading": gh("jumptrading"),
+    "virtu": gh("virtu"),
+    "tworivers": gh("twosigma"),
 }
-ORACLE = {  # host -> site numbers to try
-    "jpmc.fa.oraclecloud.com": ["CX_1001", "CX_1002"],
-    "eofd.fa.us6.oraclecloud.com": ["CX_1001"],
-    "hdpc.fa.us2.oraclecloud.com": ["CX_1", "CX_1001"],
-    "fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com": ["CX_1", "CX_1001"],
-}
 
 
-def request(url, body=None, extra=None):
+def get_json(url, body=None):
     headers = dict(HEADERS)
-    headers.update(extra or {})
     data = None
     if body is not None:
         data = json.dumps(body).encode()
         headers["Content-Type"] = "application/json"
     req = urllib.request.Request(url, data=data, headers=headers)
-    return urllib.request.urlopen(req, timeout=20)
-
-
-def get_json(url, body=None):
-    with request(url, body) as resp:
-        return json.loads(resp.read().decode("utf-8"))
-
-
-def try_count(fn):
     try:
-        return fn(), None
-    except Exception as exc:
-        return None, repr(exc)[:120]
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as exc:
+        raise RuntimeError(f"HTTP {exc.code}: {exc.read()[:160]!r}") from None
 
 
-def probe_simple(ats, target):
+def probe(ats, target):
+    """Return (count, sample title)."""
     if ats == "greenhouse":
-        fn = lambda: len(get_json(f"https://boards-api.greenhouse.io/v1/boards/{target}/jobs")["jobs"])
-    elif ats == "lever":
-        fn = lambda: len(get_json(f"https://api.lever.co/v0/postings/{target}?mode=json"))
-    elif ats == "ashby":
-        fn = lambda: len(get_json(f"https://api.ashbyhq.com/posting-api/job-board/{target}")["jobs"])
-    else:
-        fn = lambda: get_json(f"https://api.smartrecruiters.com/v1/companies/{target}/postings?limit=1")["totalFound"]
-    count, error = try_count(fn)
-    return {"ats": ats, "target": target, "count": count or 0, "error": error}
+        jobs = get_json(f"https://boards-api.greenhouse.io/v1/boards/{target}/jobs").get("jobs", [])
+        return len(jobs), jobs[0]["title"] if jobs else ""
+    if ats == "smartrecruiters":
+        d = get_json(f"https://api.smartrecruiters.com/v1/companies/{target}/postings?limit=1")
+        c = d.get("content", [])
+        return d.get("totalFound"), c[0]["name"] if c else ""
+    if ats == "workday":
+        host, tenant, site = target.split("|")
+        d = get_json(f"https://{host}/wday/cxs/{tenant}/{site}/jobs",
+                     {"appliedFacets": {}, "limit": 1, "offset": 0, "searchText": ""})
+        p = d.get("jobPostings", [])
+        return d.get("total"), p[0].get("title", "") if p else ""
+    if ats == "oracle":
+        host, site = target.split("|")
+        d = get_json(f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true"
+                     f"&expand=requisitionList&finder=findReqs;siteNumber={site},limit=2,offset=0")
+        item = (d.get("items") or [{}])[0]
+        reqs = item.get("requisitionList") or []
+        sample = json.dumps(reqs[0])[:400] if reqs else ""
+        return item.get("TotalJobsCount"), sample
+    if ats == "goldman":
+        d = get_json("https://api-higher.gs.com/gateway/api/v1/graphql", {
+            "operationName": "GetRoles", "query": GS_QUERY,
+            "variables": {"searchQueryInput": {
+                "page": {"pageSize": 2, "pageNumber": 0},
+                "sort": {"sortStrategy": "RELEVANCE", "sortOrder": "DESC"},
+                "filters": [], "experiences": ["PROFESSIONAL", "EARLY_CAREER"], "searchTerm": "",
+            }},
+        })
+        if d.get("errors"):
+            raise RuntimeError(json.dumps(d["errors"])[:300])
+        rs = d["data"]["roleSearch"]
+        return rs["totalCount"], json.dumps(rs["items"][0])[:400] if rs["items"] else ""
+    raise ValueError(ats)
 
 
-def workday_count(host, tenant, site):
-    d = get_json(f"https://{host}/wday/cxs/{tenant}/{site}/jobs",
-                 {"appliedFacets": {}, "limit": 1, "offset": 0, "searchText": ""})
-    return d.get("total") or 0
-
-
-def probe_workday(tenant, sites):
-    best = {"ats": "workday", "target": tenant, "count": 0, "error": "no working host/site"}
-    for n in WD_NUMBERS:
-        host = f"{tenant}.wd{n}.myworkdayjobs.com"
-        candidates = list(sites)
-        try:  # the board's root usually redirects to its default career site
-            with request(f"https://{host}/", extra={"Accept": "text/html"}) as resp:
-                m = re.search(r"myworkdayjobs\.com/(?:[a-z]{2}-[A-Z]{2}/)?([^/?#]+)", resp.geturl())
-                if m and m.group(1) not in candidates:
-                    candidates.insert(0, m.group(1))
-        except Exception as exc:
-            if "HTTP Error" not in repr(exc) and "HTTPError" not in repr(exc):
-                continue  # host does not exist on this data center
-        for site in candidates:
-            count, error = try_count(lambda: workday_count(host, tenant, site))
+def probe_candidate(item):
+    name, variants = item
+    errors = []
+    for ats, target in variants:
+        try:
+            count, sample = probe(ats, target)
             if count:
-                return {"ats": "workday", "target": f"{host}|{tenant}|{site}", "count": count, "error": None}
-            best["error"] = f"{host}/{site}: {error}"
-    return best
-
-
-def probe_oracle(host, sites):
-    for site in sites:
-        url = (f"https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true"
-               f"&expand=requisitionList&finder=findReqs;siteNumber={site},limit=1,offset=0")
-        count, error = try_count(lambda: get_json(url)["items"][0]["TotalJobsCount"])
-        if count:
-            return {"ats": "oracle", "target": f"{host}|{site}", "count": count, "error": None}
-    return {"ats": "oracle", "target": host, "count": 0, "error": error}
-
-
-def probe_goldman():
-    query = ("query GetRoles($searchQueryInput: RoleSearchQueryInput!) { roleSearch(searchQueryInput: "
-             "$searchQueryInput) { totalCount items { roleId jobTitle corporateTitle division "
-             "locations { city state country } externalSource { sourceId } } } }")
-    body = {"operationName": "GetRoles", "query": query, "variables": {"searchQueryInput": {
-        "page": {"pageSize": 5, "pageNumber": 0}, "sort": {"sortStrategy": "POSTED_DATE", "sortOrder": "DESC"},
-        "filters": [], "experiences": ["PROFESSIONAL", "EARLY_CAREER"], "searchTerm": ""}}}
-    def fn():
-        d = get_json("https://api-higher.gs.com/gateway/api/v1/graphql", body)
-        return d["data"]["roleSearch"]["totalCount"]
-    count, error = try_count(fn)
-    return {"ats": "goldman-graphql", "target": "api-higher.gs.com", "count": count or 0, "error": error}
+                return {"name": name, "ok": True, "ats": ats, "target": target, "count": count, "sample": sample}
+            errors.append(f"{ats}:{target} -> empty")
+        except Exception as exc:
+            errors.append(f"{ats}:{target} -> {str(exc)[:120]}")
+    return {"name": name, "ok": False, "ats": None, "target": None, "count": 0, "errors": errors[:6]}
 
 
 def main():
-    jobs = [lambda t=t: probe_simple("greenhouse", t) for t in GREENHOUSE]
-    jobs += [lambda t=t: probe_simple("lever", t) for t in LEVER]
-    jobs += [lambda t=t: probe_simple("ashby", t) for t in ASHBY]
-    jobs += [lambda t=t: probe_simple("smartrecruiters", t) for t in SMARTRECRUITERS]
-    jobs += [lambda t=t, s=s: probe_workday(t, s) for t, s in WORKDAY.items()]
-    jobs += [lambda h=h, s=s: probe_oracle(h, s) for h, s in ORACLE.items()]
-    jobs.append(probe_goldman)
-    with ThreadPoolExecutor(max_workers=16) as pool:
-        results = list(pool.map(lambda job: job(), jobs))
-    ok = sorted((r for r in results if r["count"]), key=lambda r: (r["ats"], r["target"]))
-    failed = sorted((r for r in results if not r["count"]), key=lambda r: (r["ats"], r["target"]))
-    for r in ok:
-        print(f"OK   {r['ats']:16} {r['count']:6}  {r['target']}")
-    print(f"{len(ok)} worked, {len(failed)} failed")
-    Path("tools/probe_results.json").write_text(json.dumps({"ok": ok, "failed": failed}, indent=1) + "\n")
+    with ThreadPoolExecutor(max_workers=12) as pool:
+        results = list(pool.map(probe_candidate, CANDIDATES.items()))
+    for r in results:
+        print(f"{'OK  ' if r['ok'] else 'FAIL'} {r['name']:22} {r['ats'] or '':16} {r['count']}  {r['target'] or ''}")
+    Path("tools/probe_results.json").write_text(json.dumps(results, indent=2) + "\n")
 
 
 if __name__ == "__main__":
