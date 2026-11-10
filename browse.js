@@ -5,6 +5,7 @@ loadData().then(({ rows, lastDay }) => {
   const $ = id => document.getElementById(id);
   const state = { view: "role", limit: 100 };
   let starred = Shortlist.all();
+  let statuses = Status.all();
 
   const fillSelect = (el, values, anyLabel) => {
     const counts = new Map();
@@ -40,9 +41,10 @@ loadData().then(({ rows, lastDay }) => {
     $("list").innerHTML = list.length
       ? list.slice(0, state.limit).map(r => postingItem(r, {
           star: true, starred: starred.has(r.posting_id), apply: true,
+          status: starred.has(r.posting_id) ? (statuses[r.posting_id] || "") : null,
           note: r.first_run ? `open since before ${fmtDay(r.first_seen)}` : `first seen ${fmtDay(r.first_seen)}, ${plural(r.days_open, "day")} open`,
         })).join("")
-      : `<li><span></span><span class="muted">${state.view === "starred" ? "Your shortlist is empty. Star a posting to save it here." : "No open postings match. Try clearing a filter."}</span></li>`;
+      : `<li class="plain"><span></span><span class="muted">${state.view === "starred" ? "Your shortlist is empty. Star a posting to save it here, then mark it Applied, Interviewing or Rejected." : "No open postings match. Try clearing a filter."}</span></li>`;
     $("more").hidden = list.length <= state.limit;
     $("more").textContent = `Show more (${(list.length - state.limit).toLocaleString()} left)`;
   }
@@ -60,11 +62,18 @@ loadData().then(({ rows, lastDay }) => {
     $(id).addEventListener("input", () => { state.limit = 100; render(); });
   $("more").onclick = () => { state.limit += 200; render(); };
   $("list").addEventListener("click", e => {
+    const tomb = e.target.closest(".tomb");
+    if (tomb) {                       // set or clear the application status
+      Status.toggle(tomb.dataset.id, tomb.dataset.status);
+      statuses = Status.all();
+      render();
+      return;
+    }
     const btn = e.target.closest(".star");
     if (!btn) return;
-    btn.setAttribute("aria-pressed", String(Shortlist.toggle(btn.dataset.id)));
+    Shortlist.toggle(btn.dataset.id);
     starred = Shortlist.all();
-    if (state.view === "starred") render();
+    render();                         // starred postings show their status tombstones
   });
   setView("role");
 }).catch(showError);
