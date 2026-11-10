@@ -1,7 +1,7 @@
 // Small SVG charts drawn by hand: vertical bars, horizontal bars, two-series lines, and a split bar.
 // Every chart gets a hover tooltip and a "View the numbers" table underneath.
 
-const COLOR = { all: "#8a76d6", role: "#e0485a", rest: "#36405f" };
+const COLOR = { all: "#5b8fc9", role: "#d07a3c", rest: "#34373d" };
 const SVGNS = "http://www.w3.org/2000/svg";
 
 function svgEl(name, attrs = {}, text) {
@@ -112,7 +112,7 @@ function lines(host, labels, series, { tableHead } = {}) {
   for (const s of series) {
     svg.append(svgEl("path", { fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round",
       d: s.values.map((v, i) => `${i ? "L" : "M"}${X(i)},${Y(v)}`).join("") }));
-    s.values.forEach((v, i) => svg.append(svgEl("circle", { cx: X(i), cy: Y(v), r: 4, fill: s.color, stroke: "#141a2e", "stroke-width": 2 })));
+    s.values.forEach((v, i) => svg.append(svgEl("circle", { cx: X(i), cy: Y(v), r: 4, fill: s.color, stroke: "#17181b", "stroke-width": 2 })));
     ends.push({ s, y: Y(s.values[n - 1]) });
   }
   ends.sort((a, b) => a.y - b.y);

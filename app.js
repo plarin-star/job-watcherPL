@@ -46,27 +46,58 @@ const SCARECROW = `<svg class="scarecrow" viewBox="0 0 200 300" aria-hidden="tru
       <path d="M168 181l-11-6v13zM168 181l11-6v13zM165 183l-3 12 6-4 6 4-3-12z"/></g>
   </g></svg>`;
 
-// A snowy hillside for the bottom of the header: crooked pines, one with a star, and a few bats.
-function skyline() {
-  const pine = (x, h, lean, star) => {
-    const w = h * 0.42, top = 96 - h;
-    const tiers = [0, 1, 2].map(i => {
-      const y0 = top + (h * 0.26) * i, y1 = y0 + h * 0.4, half = w * (0.45 + i * 0.27);
-      return `M${x} ${y0}L${x + half} ${y1}Q${x} ${y1 - 5} ${x - half} ${y1}Z`;
-    }).join("");
-    return `<g transform="rotate(${lean} ${x} 96)"><path d="M${x - 2} 100V${96 - h * 0.2}h4V100z" fill="#0b1512"/><path d="${tiers}" fill="#12261f"/>` +
-      `<path d="${[0, 1, 2].map(i => { const y1 = top + (h * 0.26) * i + h * 0.4, half = w * (0.45 + i * 0.27); return `M${x - half} ${y1}Q${x} ${y1 - 5} ${x + half} ${y1}`; }).join("")}" fill="none" stroke="#e8ecf6" stroke-width="2.200" stroke-linecap="round" opacity=".8"/>` +
-      (star ? `<path transform="translate(${x} ${top - 3})" d="M0-9l2.600 6 6.400.600-4.800 4.300 1.400 6.300L0 5l-5.600 3.200 1.400-6.300-4.800-4.300 6.400-.600z" fill="#f6dc94"/>` : "") + `</g>`;
+// The header scenery, drawn as SVG on layers behind the header image.
+// scene(): a huge pale mottled moon with a bare-tree bluff in front of it.
+function scene() {
+  return `<svg class="scene" viewBox="0 0 600 300" aria-hidden="true">
+    <defs>
+      <radialGradient id="halo"><stop offset="0.55" stop-color="#e8e2cf" stop-opacity=".22"/><stop offset="1" stop-color="#e8e2cf" stop-opacity="0"/></radialGradient>
+      <clipPath id="disc"><circle cx="372" cy="128" r="112"/></clipPath>
+      <filter id="mottle" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="4" seed="11"/>
+        <feColorMatrix values="0 0 0 0 0.42  0 0 0 0 0.40  0 0 0 0 0.33  0 0 0 1.500 -0.550"/>
+      </filter>
+    </defs>
+    <circle cx="372" cy="128" r="190" fill="url(#halo)"/>
+    <circle cx="372" cy="128" r="112" fill="#e9e4d2"/>
+    <rect x="250" y="6" width="244" height="244" filter="url(#mottle)" clip-path="url(#disc)" opacity=".5"/>
+    <path fill="#050506" d="M0 300C56 296 82 240 112 218c30-21 52-52 84-74 20-14 46-22 66-12 26 13 40 44 62 66 26 26 60 44 100 54 50 12 110 14 176 16v32z"/>
+    <g fill="none" stroke="#050506" stroke-linecap="round" transform="translate(62 34)">
+      <path stroke-width="7" d="M236 134c-2-22 2-44-4-66"/>
+      <path stroke-width="4" d="M233 96c-12-8-22-10-34-22M233 84c10-10 22-12 30-28M232 70c-8-10-8-22-16-30M232 70c8-8 8-20 18-28"/>
+      <path stroke-width="2.500" d="M204 78c-8-2-12-8-18-10M212 84c-2-8-8-12-10-20M256 64c8-2 12-8 20-8M220 48c-2-6-8-8-10-14M246 50c2-8 8-10 10-18"/>
+    </g>
+  </svg>`;
+}
+
+// rooftops(): a few leaning houses with uneven roofs, bent chimneys and tiny amber windows.
+function rooftops() {
+  const house = (x, w, h, lean, roof, win) => {
+    const y = 104 - h, peak = y - roof;
+    const windows = win.map(([dx, dy]) => `<rect x="${x + dx}" y="${y + dy}" width="4" height="6" fill="#d9873f"/>`).join("");
+    return `<g transform="rotate(${lean} ${x + w / 2} 104)">
+      <path d="M${x} 106V${y}L${x - 5} ${y + 2}L${x + w * 0.42} ${peak}L${x + w + 6} ${y + 4}L${x + w} ${y + 2}V106z"/>
+      <path d="M${x + w * 0.66} ${y - roof * 0.2}l-2-${roof * 0.75} 4-3 5 1 1 ${roof * 0.55}z"/>
+      ${windows}</g>`;
   };
-  const pines = [[60, 56, -5], [150, 78, 4, 1], [250, 44, -8], [430, 60, 6], [560, 40, -4], [700, 66, 5], [1130, 58, -6], [1180, 40, 7]]
-    .map(p => pine(...p)).join("");
-  const bat = (x, y, s) => `<path transform="translate(${x} ${y}) scale(${s})" d="M0 0c2-3 5-4 8-3-1 1-1 2-1 3 2-2 5-2 7 0 0-1 0-2-1-3 3-1 6 0 8 3-3 0-5 1-6 3-2-2-4-2-5 0-1-2-3-2-5 0-1-2-3-3-5-3z" fill="#0a0c18"/>`;
+  const houses = [
+    house(40, 34, 30, -5, 20, [[8, 8], [22, 14]]),
+    house(84, 26, 44, 4, 26, [[10, 10], [10, 26]]),
+    house(128, 40, 26, -3, 16, [[8, 9], [26, 9]]),
+    house(330, 30, 38, 5, 24, [[12, 12]]),
+    house(372, 44, 28, -4, 18, [[10, 10], [30, 12]]),
+    house(430, 24, 50, 3, 30, [[9, 12], [9, 30]]),
+    house(1090, 36, 30, -5, 20, [[10, 10], [24, 12]]),
+    house(1140, 28, 42, 4, 24, [[10, 12]]),
+  ].join("");
+  return `<svg class="rooftops" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMax slice" aria-hidden="true" fill="#050506">
+    ${houses}<path d="M0 120V100c140-8 260 4 400-2s280-10 430-2 250 6 370-4v28z"/></svg>`;
+}
+
+// skyline(): the dark ground in front of the header image; it merges into the page below.
+function skyline() {
   return `<svg class="skyline" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
-    ${bat(610, 14, 1.100)}${bat(690, 30, 0.800)}${bat(520, 34, 0.700)}
-    <path d="M0 120V84c160-22 300-6 460-12s300-20 440-6 220 10 300-4v58z" fill="#1c2340"/>
-    ${pines}
-    <path d="M0 120V100c140-14 260 4 400-4s280-16 430-4 250 8 370-6v34z" fill="#dfe5f3"/>
-    <path d="M0 120v-8c200-10 380 6 600-2s400-6 600 0v10z" fill="#0c0f1c"/></svg>`;
+    <path d="M0 120V100c140-14 260 4 400-4s280-16 430-4 250 8 370-6v34z" fill="#0b0b0d"/></svg>`;
 }
 
 function renderChrome() {
@@ -76,11 +107,11 @@ function renderChrome() {
   const header = document.createElement("header");
   header.innerHTML = `
     <div class="masthead">
-      <div class="lights" aria-hidden="true">${"<i></i>".repeat(20)}</div>
+      ${scene()}
+      ${rooftops()}
       <div class="masthead-inner">
-        <div class="moon" aria-hidden="true"></div>
         <p class="wordmark">Job Watcher</p>
-        <p class="tagline">Investment and banking analyst openings at 25 firms, unwrapped fresh every morning.</p>
+        <p class="tagline">Investment and banking analyst openings at 25 firms, posted on the town notice board every morning.</p>
       </div>
          <img class="scarecrow" src="download.png" alt="">
       ${skyline()}
@@ -103,7 +134,7 @@ function renderChrome() {
   document.body.prepend(snow);
 
   const web = document.createElement("div");
-  web.innerHTML = `<svg class="web" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#aab2c8" stroke-width="0.8">
+  web.innerHTML = `<svg class="web" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#a7abb3" stroke-width="0.8">
     <path d="M100 100L0 100M100 100L100 0M100 100L8 62M100 100L30 30M100 100L62 8"/>
     <path d="M100 78Q90 80 84 93 77 88 78 100M100 56Q82 60 70 87 56 80 56 100M100 34Q74 40 55 81 34 72 34 100M100 12Q66 20 41 75 14 64 12 100"/></svg>`;
   document.body.append(web.firstChild);
