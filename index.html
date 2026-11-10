@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Today · Job Watcher</title>
+<meta name="description" content="Daily tracker of investment and banking analyst job postings at 25 firms.">
+<meta name="theme-color" content="#120d1a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Today</h1>
+  <p class="lede" id="runline">Loading the latest run…</p>
+  <div class="counts" id="counts"></div>
+  <div class="two-col">
+    <section class="panel"><h2 id="new-h">New postings</h2><ul class="postings" id="new"></ul></section>
+    <section class="panel"><h2 id="gone-h">Removed postings</h2><ul class="postings" id="gone"></ul></section>
+  </div>
+  <section class="panel"><h2 id="src-h">Sources</h2><ul class="sources" id="sources"></ul></section>
+</main>
+<script src="app.js"></script>
+<script src="today.js"></script>
+</body>
+</html>
