@@ -1,110 +1,85 @@
 {
-  "run_time": "2026-11-10T18:38:45Z",
+  "run_time": "2026-11-10T18:56:39Z",
   "first_run_date": "2026-11-10",
   "days_with_success": 1,
-  "open": 12035,
+  "open": 10843,
   "new_today": 0,
   "removed_today": 0,
   "sources": [
     {
-      "name": "stripe",
+      "name": "goldmansachs",
       "ok": true,
-      "count": 776
+      "count": 731
     },
     {
-      "name": "robinhood",
+      "name": "jpmorgan",
       "ok": true,
-      "count": 152
+      "count": 1011
     },
     {
-      "name": "affirm",
+      "name": "morganstanley",
       "ok": true,
-      "count": 213
+      "count": 1209
     },
     {
-      "name": "coinbase",
+      "name": "bankofamerica",
       "ok": true,
-      "count": 285
+      "count": 1990
     },
     {
-      "name": "brex",
+      "name": "wellsfargo",
       "ok": true,
-      "count": 276
+      "count": 1560
     },
     {
-      "name": "sofi",
+      "name": "barclays",
       "ok": true,
-      "count": 48
+      "count": 621
     },
     {
-      "name": "chime",
+      "name": "deutschebank",
       "ok": true,
-      "count": 66
+      "count": 1141
     },
     {
-      "name": "toast",
+      "name": "deloitte",
       "ok": true,
-      "count": 330
+      "count": 277
     },
     {
-      "name": "carta",
+      "name": "raymondjames",
       "ok": true,
-      "count": 78
+      "count": 293
     },
     {
-      "name": "betterment",
+      "name": "houlihanlokey",
       "ok": true,
-      "count": 26
+      "count": 50
     },
     {
-      "name": "palantir",
+      "name": "pjtpartners",
       "ok": true,
-      "count": 304
+      "count": 55
     },
     {
-      "name": "spotify",
+      "name": "williamblair",
       "ok": true,
-      "count": 85
+      "count": 49
     },
     {
-      "name": "wealthfront",
+      "name": "lincolninternational",
       "ok": true,
-      "count": 22
+      "count": 37
     },
     {
-      "name": "ramp",
+      "name": "blackrock",
       "ok": true,
-      "count": 173
+      "count": 278
     },
     {
-      "name": "notion",
+      "name": "blackstone",
       "ok": true,
-      "count": 152
-    },
-    {
-      "name": "plaid",
-      "ok": true,
-      "count": 140
-    },
-    {
-      "name": "kraken",
-      "ok": true,
-      "count": 90
-    },
-    {
-      "name": "servicenow",
-      "ok": true,
-      "count": 743
-    },
-    {
-      "name": "capitalone",
-      "ok": true,
-      "count": 2059
-    },
-    {
-      "name": "mastercard",
-      "ok": true,
-      "count": 910
+      "count": 127
     },
     {
       "name": "fidelity",
@@ -112,19 +87,24 @@
       "count": 856
     },
     {
-      "name": "bankofamerica",
+      "name": "troweprice",
       "ok": true,
-      "count": 1989
+      "count": 135
     },
     {
-      "name": "salesforce",
+      "name": "pimco",
       "ok": true,
-      "count": 1550
+      "count": 160
     },
     {
-      "name": "tyson",
+      "name": "carlyle",
       "ok": true,
-      "count": 712
+      "count": 66
+    },
+    {
+      "name": "point72",
+      "ok": true,
+      "count": 197
     }
   ]
 }
