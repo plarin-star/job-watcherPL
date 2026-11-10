@@ -1,0 +1,43 @@
+name: Daily run
+
+on:
+  schedule:
+    - cron: "23 12 * * *"   # every day at 12:23 UTC
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/daily.yml
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: daily-run
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch every source
+        run: python -m watcher.fetch
+      - name: Build history and status from the raw files
+        run: python -m watcher.build
+      - name: Commit raw files, history and status
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "Daily run $(date -u +%F)" || echo "No changes"
+          git pull --rebase origin main
+          git push
+      - name: Open today's issue and close yesterday's
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m watcher.issue
