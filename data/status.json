@@ -1,0 +1,130 @@
+{
+  "run_time": "2026-11-10T18:38:45Z",
+  "first_run_date": "2026-11-10",
+  "days_with_success": 1,
+  "open": 12035,
+  "new_today": 0,
+  "removed_today": 0,
+  "sources": [
+    {
+      "name": "stripe",
+      "ok": true,
+      "count": 776
+    },
+    {
+      "name": "robinhood",
+      "ok": true,
+      "count": 152
+    },
+    {
+      "name": "affirm",
+      "ok": true,
+      "count": 213
+    },
+    {
+      "name": "coinbase",
+      "ok": true,
+      "count": 285
+    },
+    {
+      "name": "brex",
+      "ok": true,
+      "count": 276
+    },
+    {
+      "name": "sofi",
+      "ok": true,
+      "count": 48
+    },
+    {
+      "name": "chime",
+      "ok": true,
+      "count": 66
+    },
+    {
+      "name": "toast",
+      "ok": true,
+      "count": 330
+    },
+    {
+      "name": "carta",
+      "ok": true,
+      "count": 78
+    },
+    {
+      "name": "betterment",
+      "ok": true,
+      "count": 26
+    },
+    {
+      "name": "palantir",
+      "ok": true,
+      "count": 304
+    },
+    {
+      "name": "spotify",
+      "ok": true,
+      "count": 85
+    },
+    {
+      "name": "wealthfront",
+      "ok": true,
+      "count": 22
+    },
+    {
+      "name": "ramp",
+      "ok": true,
+      "count": 173
+    },
+    {
+      "name": "notion",
+      "ok": true,
+      "count": 152
+    },
+    {
+      "name": "plaid",
+      "ok": true,
+      "count": 140
+    },
+    {
+      "name": "kraken",
+      "ok": true,
+      "count": 90
+    },
+    {
+      "name": "servicenow",
+      "ok": true,
+      "count": 743
+    },
+    {
+      "name": "capitalone",
+      "ok": true,
+      "count": 2059
+    },
+    {
+      "name": "mastercard",
+      "ok": true,
+      "count": 910
+    },
+    {
+      "name": "fidelity",
+      "ok": true,
+      "count": 856
+    },
+    {
+      "name": "bankofamerica",
+      "ok": true,
+      "count": 1989
+    },
+    {
+      "name": "salesforce",
+      "ok": true,
+      "count": 1550
+    },
+    {
+      "name": "tyson",
+      "ok": true,
+      "count": 712
+    }
+  ]
+}
