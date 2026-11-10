@@ -61,15 +61,18 @@ a:hover { color: #fff; }
   display: flex; justify-content: space-around; pointer-events: none;
   border-top: 2px solid #23202e;
 }
-.lights i {
+.lights i {   /* each light is a tiny coffin */
   width: 8px; height: 13px; margin-top: 3px;
-  border-radius: 50% 50% 50% 50% / 38% 38% 62% 62%;
-  background: var(--moon); color: var(--moon); box-shadow: 0 0 10px 2px currentColor;
+  color: var(--moon); filter: drop-shadow(0 0 5px currentColor);
   animation: twinkle 3.4s ease-in-out infinite;
 }
-.lights i:nth-child(4n+1) { background: var(--teal); color: var(--teal); animation-delay: 0.8s; }
-.lights i:nth-child(4n+2) { background: var(--blood); color: var(--blood); animation-delay: 1.7s; }
-.lights i:nth-child(4n+3) { background: var(--orchid); color: var(--orchid); animation-delay: 2.5s; }
+.lights i::before {
+  content: ""; display: block; width: 100%; height: 100%; background: currentColor;
+  clip-path: polygon(28% 0, 72% 0, 100% 27%, 74% 100%, 26% 100%, 0 27%);
+}
+.lights i:nth-child(4n+1) { color: var(--teal); animation-delay: 0.8s; }
+.lights i:nth-child(4n+2) { color: var(--blood); animation-delay: 1.7s; }
+.lights i:nth-child(4n+3) { color: var(--orchid); animation-delay: 2.5s; }
 @keyframes twinkle { 50% { opacity: 0.3; } }
 
 .wordmark {
