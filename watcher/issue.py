@@ -51,7 +51,7 @@ def build_body(rows, status, site_url=""):
         f"**Sources:** {len(status['sources']) - len(failed)} of {len(status['sources'])} succeeded"
         + (f" (failed: {', '.join(failed)})" if failed else ""),
         "",
-        "⭐ marks postings in my role (financial analyst / FP&A).",
+        "⭐ marks postings in my role (investment / banking analyst, entry and mid level).",
     ]
     if site_url:
         head.append(f"Full lists: {site_url}")

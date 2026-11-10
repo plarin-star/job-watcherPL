@@ -1,34 +1,50 @@
-"""The title rule: decides whether a posting is in my role (financial analyst / FP&A).
+"""The title rule: decides whether a posting is in my role.
 
-A title is in the role when, after lower-casing it:
+My role is investment / banking analyst at entry and mid level.
 
-1. it contains none of the exclude words (financial-crime and compliance jobs), and
-2. either
-   a. it names FP&A or finance planning directly
-      ("fp&a", "fp & a", "fpa", "financial planning", "strategic finance", "business finance"), or
-   b. it has a role word ("analyst" or "associate") AND a field word
-      ("financ", "treasury", "investment", "valuation", "corporate development", "capital markets").
+A title is in the role when, matching whole words in the lower-cased title:
 
-Examples in:  "Financial Analyst", "Senior FP&A Analyst", "Associate, Strategic Finance",
-              "Treasury Analyst", "Analyst, Corporate Finance".
-Examples out: "Data Analyst", "Financial Crimes Analyst", "Software Engineer, Payments",
-              "Accounting Manager".
+1. it has a role word:  "analyst" or "associate"; and
+2. it has a field word: "investment(s)", "equity research", "credit research",
+   "fixed income", "capital markets", "m&a", "mergers", "corporate development",
+   "private equity", "valuation(s)", "portfolio" or "trading"; and
+3. it has no seniority word: "senior", "sr", "principal", "lead", "manager",
+   "director", "vice president", "vp", "head", "chief" or "managing"; and
+4. it has no excluded word: "advisor", "adviser", "sales", "insurance",
+   "compliance", "fraud", "crime(s)", "sanctions", "aml" or "kyc".
+
+Examples in:  "Investment Banking Analyst", "Equity Research Associate",
+              "Associate Analyst, Capital Markets & Analytics", "Portfolio Analyst".
+Examples out: "Senior Associate, Capital Markets" (seniority),
+              "Alternative Investments Sales Strategy Analyst" (sales),
+              "GFC Investigations Analyst" (no field word), "Software Engineer".
 """
 
 import re
 
-DIRECT = ["fp&a", "fp & a", "financial planning", "strategic finance", "business finance"]
-DIRECT_RE = re.compile(r"\bfpa\b")
-ROLE_WORDS = ["analyst", "associate"]
-FIELD_WORDS = ["financ", "treasury", "investment", "valuation", "corporate development", "capital markets"]
-EXCLUDE = ["crime", "fraud", "sanction", "compliance"]
-EXCLUDE_RE = re.compile(r"\b(aml|kyc)\b")
+
+def _words(*phrases):
+    return re.compile(r"(?<![a-z])(?:" + "|".join(re.escape(p) for p in phrases) + r")(?![a-z])")
+
+
+ROLE = _words("analyst", "associate")
+FIELD = _words(
+    "investment", "investments", "equity research", "credit research", "fixed income",
+    "capital markets", "m&a", "mergers", "corporate development", "private equity",
+    "valuation", "valuations", "portfolio", "trading",
+)
+SENIORITY = _words(
+    "senior", "sr", "principal", "lead", "manager", "director", "vice president", "vp",
+    "head", "chief", "managing",
+)
+EXCLUDE = _words(
+    "advisor", "adviser", "sales", "insurance", "compliance", "fraud", "crime", "crimes",
+    "sanctions", "aml", "kyc",
+)
 
 
 def in_role(title: str) -> bool:
-    t = (title or "").lower()
-    if any(word in t for word in EXCLUDE) or EXCLUDE_RE.search(t):
+    t = " ".join((title or "").lower().split())
+    if SENIORITY.search(t) or EXCLUDE.search(t):
         return False
-    if any(word in t for word in DIRECT) or DIRECT_RE.search(t):
-        return True
-    return any(w in t for w in ROLE_WORDS) and any(w in t for w in FIELD_WORDS)
+    return bool(ROLE.search(t) and FIELD.search(t))
