@@ -2,7 +2,7 @@
 // Files from this site (pages, styles, scripts, data): network first, so an online visit always
 // gets the newest version; the last copy is kept and used when offline.
 // Fonts from Google: saved copy first, since they do not change.
-const CACHE = "job-watcher-v3";
+const CACHE = "job-watcher-v4";
 const SHELL = [
   "./", "index.html", "browse.html", "market.html", "style.css",
   "app.js", "today.js", "browse.js", "charts.js", "market.js",

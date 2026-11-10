@@ -46,21 +46,27 @@ const SCARECROW = `<svg class="scarecrow" viewBox="0 0 200 300" aria-hidden="tru
       <path d="M168 181l-11-6v13zM168 181l11-6v13zM165 183l-3 12 6-4 6 4-3-12z"/></g>
   </g></svg>`;
 
-// A graveyard skyline for the bottom of the header: tombstones, crosses, a bare tree and an iron fence.
+// A snowy hillside for the bottom of the header: crooked pines, one with a star, and a few bats.
 function skyline() {
-  const stones = [[90, 34, 46], [210, 26, 38], [300, 40, 52], [520, 30, 40], [640, 44, 50], [860, 28, 42], [1010, 38, 48], [1120, 24, 36]]
-    .map(([x, w, h], i) => `<path transform="rotate(${[-6, 5, -3, 7, -4, 3, -7, 5][i]} ${x} 100)" d="M${x - w / 2} 104V${100 - h + w / 2}a${w / 2} ${w / 2} 0 0 1 ${w} 0V104z"/>`).join("");
-  const crosses = [[410, 50], [760, 44], [940, 36]]
-    .map(([x, h]) => `<path d="M${x - 4} 104V${104 - h}h8V104zM${x - 14} ${104 - h + 12}h28v7h-28z"/>`).join("");
-  let fence = "";
-  for (let x = 0; x <= 1200; x += 20) fence += `<path d="M${x} 104V78l3-8 3 8v26z"/>`;
-  return `<svg class="skyline" viewBox="0 0 1200 112" preserveAspectRatio="none" aria-hidden="true" fill="#0a0b10">
-    <path d="M0 112V96c120-10 240 6 380-2s260-12 420-2 280 6 400-4v24z"/>
-    ${stones}${crosses}
-    <g opacity="0.9">${fence}<path d="M0 84h1200v3H0zM0 96h1200v3H0z"/></g>
-    <g stroke="#0a0b10" stroke-width="5" fill="none" stroke-linecap="round">
-      <path d="M152 104V52M152 76l-22-20M152 66l20-22M130 56l-10-16M172 44l4-16M152 52l-8-22M152 52l12-14"/>
-    </g></svg>`;
+  const pine = (x, h, lean, star) => {
+    const w = h * 0.42, top = 96 - h;
+    const tiers = [0, 1, 2].map(i => {
+      const y0 = top + (h * 0.26) * i, y1 = y0 + h * 0.4, half = w * (0.45 + i * 0.27);
+      return `M${x} ${y0}L${x + half} ${y1}Q${x} ${y1 - 5} ${x - half} ${y1}Z`;
+    }).join("");
+    return `<g transform="rotate(${lean} ${x} 96)"><path d="M${x - 2} 100V${96 - h * 0.2}h4V100z" fill="#0b1512"/><path d="${tiers}" fill="#12261f"/>` +
+      `<path d="${[0, 1, 2].map(i => { const y1 = top + (h * 0.26) * i + h * 0.4, half = w * (0.45 + i * 0.27); return `M${x - half} ${y1}Q${x} ${y1 - 5} ${x + half} ${y1}`; }).join("")}" fill="none" stroke="#e8ecf6" stroke-width="2.200" stroke-linecap="round" opacity=".8"/>` +
+      (star ? `<path transform="translate(${x} ${top - 3})" d="M0-9l2.600 6 6.400.600-4.800 4.300 1.400 6.300L0 5l-5.600 3.200 1.400-6.300-4.800-4.300 6.400-.600z" fill="#f6dc94"/>` : "") + `</g>`;
+  };
+  const pines = [[60, 56, -5], [150, 78, 4, 1], [250, 44, -8], [430, 60, 6], [560, 40, -4], [700, 66, 5], [1130, 58, -6], [1180, 40, 7]]
+    .map(p => pine(...p)).join("");
+  const bat = (x, y, s) => `<path transform="translate(${x} ${y}) scale(${s})" d="M0 0c2-3 5-4 8-3-1 1-1 2-1 3 2-2 5-2 7 0 0-1 0-2-1-3 3-1 6 0 8 3-3 0-5 1-6 3-2-2-4-2-5 0-1-2-3-2-5 0-1-2-3-3-5-3z" fill="#0a0c18"/>`;
+  return `<svg class="skyline" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    ${bat(610, 14, 1.100)}${bat(690, 30, 0.800)}${bat(520, 34, 0.700)}
+    <path d="M0 120V84c160-22 300-6 460-12s300-20 440-6 220 10 300-4v58z" fill="#1c2340"/>
+    ${pines}
+    <path d="M0 120V100c140-14 260 4 400-4s280-16 430-4 250 8 370-6v34z" fill="#dfe5f3"/>
+    <path d="M0 120v-8c200-10 380 6 600-2s400-6 600 0v10z" fill="#0c0f1c"/></svg>`;
 }
 
 function renderChrome() {
@@ -74,7 +80,7 @@ function renderChrome() {
       <div class="masthead-inner">
         <div class="moon" aria-hidden="true"></div>
         <p class="wordmark">Job Watcher</p>
-        <p class="tagline">Investment and banking analyst openings at 25 firms, dug up fresh every morning.</p>
+        <p class="tagline">Investment and banking analyst openings at 25 firms, unwrapped fresh every morning.</p>
       </div>
       ${SCARECROW}
       ${skyline()}
@@ -97,7 +103,7 @@ function renderChrome() {
   document.body.prepend(snow);
 
   const web = document.createElement("div");
-  web.innerHTML = `<svg class="web" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#8aa8a1" stroke-width="0.8">
+  web.innerHTML = `<svg class="web" viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#aab2c8" stroke-width="0.8">
     <path d="M100 100L0 100M100 100L100 0M100 100L8 62M100 100L30 30M100 100L62 8"/>
     <path d="M100 78Q90 80 84 93 77 88 78 100M100 56Q82 60 70 87 56 80 56 100M100 34Q74 40 55 81 34 72 34 100M100 12Q66 20 41 75 14 64 12 100"/></svg>`;
   document.body.append(web.firstChild);
