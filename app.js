@@ -82,7 +82,7 @@ function renderChrome() {
         <p class="wordmark">Job Watcher</p>
         <p class="tagline">Investment and banking analyst openings at 25 firms, unwrapped fresh every morning.</p>
       </div>
-      ${SCARECROW}
+         <img class="scarecrow" src="download.png" alt="">
       ${skyline()}
     </div>
     <div class="navbar"><nav class="nav" aria-label="Pages">${links}</nav></div>`;
