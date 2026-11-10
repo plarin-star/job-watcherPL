@@ -1,0 +1,330 @@
+[
+  {
+    "name": "stripe",
+    "ats": "greenhouse",
+    "target": "stripe",
+    "ok": true,
+    "count": 776,
+    "error": null
+  },
+  {
+    "name": "robinhood",
+    "ats": "greenhouse",
+    "target": "robinhood",
+    "ok": true,
+    "count": 152,
+    "error": null
+  },
+  {
+    "name": "affirm",
+    "ats": "greenhouse",
+    "target": "affirm",
+    "ok": true,
+    "count": 213,
+    "error": null
+  },
+  {
+    "name": "coinbase",
+    "ats": "greenhouse",
+    "target": "coinbase",
+    "ok": true,
+    "count": 285,
+    "error": null
+  },
+  {
+    "name": "brex",
+    "ats": "greenhouse",
+    "target": "brex",
+    "ok": true,
+    "count": 276,
+    "error": null
+  },
+  {
+    "name": "sofi",
+    "ats": "greenhouse",
+    "target": "sofi",
+    "ok": true,
+    "count": 48,
+    "error": null
+  },
+  {
+    "name": "chime",
+    "ats": "greenhouse",
+    "target": "chime",
+    "ok": true,
+    "count": 66,
+    "error": null
+  },
+  {
+    "name": "toast",
+    "ats": "greenhouse",
+    "target": "toast",
+    "ok": true,
+    "count": 330,
+    "error": null
+  },
+  {
+    "name": "nerdwallet",
+    "ats": "greenhouse",
+    "target": "nerdwallet",
+    "ok": false,
+    "count": 0,
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "name": "marqeta",
+    "ats": "greenhouse",
+    "target": "marqeta",
+    "ok": false,
+    "count": 0,
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "name": "airbnb",
+    "ats": "greenhouse",
+    "target": "airbnb",
+    "ok": true,
+    "count": 205,
+    "error": null
+  },
+  {
+    "name": "doordash",
+    "ats": "greenhouse",
+    "target": "doordashusa",
+    "ok": true,
+    "count": 441,
+    "error": null
+  },
+  {
+    "name": "dropbox",
+    "ats": "greenhouse",
+    "target": "dropbox",
+    "ok": true,
+    "count": 35,
+    "error": null
+  },
+  {
+    "name": "figma",
+    "ats": "greenhouse",
+    "target": "figma",
+    "ok": true,
+    "count": 142,
+    "error": null
+  },
+  {
+    "name": "carta",
+    "ats": "greenhouse",
+    "target": "carta",
+    "ok": true,
+    "count": 78,
+    "error": null
+  },
+  {
+    "name": "betterment",
+    "ats": "greenhouse",
+    "target": "betterment",
+    "ok": true,
+    "count": 26,
+    "error": null
+  },
+  {
+    "name": "plaid",
+    "ats": "lever",
+    "target": "plaid",
+    "ok": false,
+    "count": 0,
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "name": "palantir",
+    "ats": "lever",
+    "target": "palantir",
+    "ok": true,
+    "count": 304,
+    "error": null
+  },
+  {
+    "name": "spotify",
+    "ats": "lever",
+    "target": "spotify",
+    "ok": true,
+    "count": 85,
+    "error": null
+  },
+  {
+    "name": "wealthfront",
+    "ats": "lever",
+    "target": "wealthfront",
+    "ok": true,
+    "count": 22,
+    "error": null
+  },
+  {
+    "name": "kraken",
+    "ats": "lever",
+    "target": "kraken",
+    "ok": false,
+    "count": 0,
+    "error": null
+  },
+  {
+    "name": "ramp",
+    "ats": "ashby",
+    "target": "ramp",
+    "ok": true,
+    "count": 173,
+    "error": null
+  },
+  {
+    "name": "mercury",
+    "ats": "ashby",
+    "target": "mercury",
+    "ok": false,
+    "count": 0,
+    "error": null
+  },
+  {
+    "name": "notion",
+    "ats": "ashby",
+    "target": "notion",
+    "ok": true,
+    "count": 152,
+    "error": null
+  },
+  {
+    "name": "openai",
+    "ats": "ashby",
+    "target": "openai",
+    "ok": true,
+    "count": 830,
+    "error": null
+  },
+  {
+    "name": "deel",
+    "ats": "ashby",
+    "target": "deel",
+    "ok": false,
+    "count": 0,
+    "error": null
+  },
+  {
+    "name": "kraken_ashby",
+    "ats": "ashby",
+    "target": "kraken.com",
+    "ok": true,
+    "count": 90,
+    "error": null
+  },
+  {
+    "name": "plaid_ashby",
+    "ats": "ashby",
+    "target": "plaid",
+    "ok": true,
+    "count": 140,
+    "error": null
+  },
+  {
+    "name": "visa",
+    "ats": "smartrecruiters",
+    "target": "Visa",
+    "ok": false,
+    "count": 0,
+    "error": null
+  },
+  {
+    "name": "bosch",
+    "ats": "smartrecruiters",
+    "target": "BoschGroup",
+    "ok": true,
+    "count": 5102,
+    "error": null
+  },
+  {
+    "name": "servicenow",
+    "ats": "smartrecruiters",
+    "target": "ServiceNow",
+    "ok": true,
+    "count": 743,
+    "error": null
+  },
+  {
+    "name": "mcdonalds",
+    "ats": "smartrecruiters",
+    "target": "McDonaldsCorporation",
+    "ok": true,
+    "count": 3,
+    "error": null
+  },
+  {
+    "name": "walmart",
+    "ats": "workday",
+    "target": "walmart.wd5.myworkdayjobs.com|walmart|WalmartExternal",
+    "ok": false,
+    "count": 0,
+    "error": "<HTTPError 422: 'Unprocessable Entity'>"
+  },
+  {
+    "name": "nvidia",
+    "ats": "workday",
+    "target": "nvidia.wd5.myworkdayjobs.com|nvidia|NVIDIAExternalCareerSite",
+    "ok": true,
+    "count": 2000,
+    "error": null
+  },
+  {
+    "name": "capitalone",
+    "ats": "workday",
+    "target": "capitalone.wd12.myworkdayjobs.com|capitalone|Capital_One",
+    "ok": true,
+    "count": 2059,
+    "error": null
+  },
+  {
+    "name": "salesforce",
+    "ats": "workday",
+    "target": "salesforce.wd12.myworkdayjobs.com|salesforce|External_Career_Site",
+    "ok": true,
+    "count": 1549,
+    "error": null
+  },
+  {
+    "name": "mastercard",
+    "ats": "workday",
+    "target": "mastercard.wd1.myworkdayjobs.com|mastercard|CorporateCareers",
+    "ok": true,
+    "count": 910,
+    "error": null
+  },
+  {
+    "name": "fidelity",
+    "ats": "workday",
+    "target": "fmr.wd1.myworkdayjobs.com|fmr|FidelityCareers",
+    "ok": true,
+    "count": 859,
+    "error": null
+  },
+  {
+    "name": "bankofamerica",
+    "ats": "workday",
+    "target": "ghr.wd1.myworkdayjobs.com|ghr|Lateral-US",
+    "ok": true,
+    "count": 1996,
+    "error": null
+  },
+  {
+    "name": "tyson",
+    "ats": "workday",
+    "target": "tysonfoods.wd5.myworkdayjobs.com|tysonfoods|TSN",
+    "ok": true,
+    "count": 712,
+    "error": null
+  },
+  {
+    "name": "jbhunt",
+    "ats": "workday",
+    "target": "jbhunt.wd1.myworkdayjobs.com|jbhunt|JBHuntCareers",
+    "ok": false,
+    "count": 0,
+    "error": "<HTTPError 422: 'Unprocessable Entity'>"
+  }
+]
