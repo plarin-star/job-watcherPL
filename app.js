@@ -8,6 +8,44 @@ const PAGES = [
 
 const BAT = `<svg class="bat" viewBox="0 0 48 26" aria-hidden="true"><path d="M24 9c1-2 1.500-4 3-6 .500 2 1.500 3 3 3.500C33 3 40 2 48 6c-4 0-6 2-7 6-2-2-4-2-6 0-1 4-5 9-11 12-6-3-10-8-11-12-2-2-4-2-6 0-1-4-3-6-7-6 8-4 15-3 18 .500 1.500-.500 2.500-1.500 3-3.500 1.500 2 2 4 3 6z"/></svg>`;
 
+// An original scarecrow for the header: crooked on its pole, with a pumpkin lantern and a holly wreath.
+const SCARECROW = `<svg class="scarecrow" viewBox="0 0 200 300" aria-hidden="true">
+  <defs><radialGradient id="glow"><stop offset="0" stop-color="#ffd76a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd76a" stop-opacity="0"/></radialGradient></defs>
+  <g transform="rotate(-6 100 290)">
+    <path d="M100 300V96" stroke="#2e2118" stroke-width="8" stroke-linecap="round"/>
+    <path d="M26 124L174 108" stroke="#2e2118" stroke-width="7" stroke-linecap="round"/>
+    <g stroke="#d8c370" stroke-width="2.2" stroke-linecap="round">
+      <path d="M30 122l-14-7M29 127l-16 1M30 132l-13 8M171 106l13-9M172 111l16-2M172 116l14 6"/>
+      <path d="M72 214l-4 14M82 208l-1 15M96 218l-2 14M110 216l3 14M124 206l3 15M134 212l5 13"/>
+      <path d="M90 100l-6 8M100 102v9M110 100l6 8"/>
+    </g>
+    <path d="M70 116L132 110 142 214 122 204 104 222 88 206 62 218z" fill="#2f4a47"/>
+    <path d="M70 116L28 121 27 137 72 141zM132 110L172 105 175 121 134 136z" fill="#263c3a"/>
+    <path d="M80 150l22-3 3 22-22 3z" fill="#5b3a7a"/><path d="M112 176l18-4 4 18-18 4z" fill="#7a5a2a"/>
+    <path d="M80 150l22-3 3 22-22 3zM112 176l18-4 4 18-18 4zM101 114l3 104" fill="none" stroke="#f5f2cb" stroke-width="1.4" stroke-dasharray="4 3"/>
+    <circle cx="103" cy="132" r="3" fill="#f5f2cb"/><circle cx="104" cy="196" r="3" fill="#f5f2cb"/>
+    <path d="M78 76c0-17 10-27 23-27s23 10 23 27-9 28-23 28-23-11-23-28z" fill="#c9b98a"/>
+    <path d="M84 98c6 5 28 5 34 0l3 8c-10 5-30 5-40 0z" fill="#8b7a4e"/>
+    <circle cx="91" cy="74" r="5.500" fill="#2f4a47"/><circle cx="111" cy="72" r="4" fill="#5b3a7a"/>
+    <path d="M89 72l4 4M93 72l-4 4M109.500 70.500l3 3M112.500 70.500l-3 3" stroke="#f5f2cb" stroke-width="1"/>
+    <path d="M100 78l5 8h-9z" fill="#e08a2c"/>
+    <path d="M90 91l5-3 4 4 5-4 4 3 4-3" fill="none" stroke="#4a3b22" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <ellipse cx="100" cy="55" rx="38" ry="7.500" fill="#1b1d28"/>
+    <path d="M76 55C84 26 100 8 128 4c-10 14-8 32-4 51z" fill="#241a33"/>
+    <path d="M77 51c14 5 32 5 46 0l1 6c-15 5-33 5-48 0z" fill="#e0485a"/>
+    <path d="M30 136v34" stroke="#d8c370" stroke-width="1.500"/>
+    <circle cx="30" cy="196" r="44" fill="url(#glow)"/>
+    <path d="M27 172c1-5 5-7 8-6-2 2-2 4-2 7z" fill="#3f7a55"/>
+    <ellipse cx="30" cy="196" rx="22" ry="19" fill="#e08a2c"/>
+    <path d="M30 177c-9 6-9 32 0 38M30 177c9 6 9 32 0 38M18 181c-7 8-7 22 0 30M42 181c7 8 7 22 0 30" fill="none" stroke="#b5651d" stroke-width="1.500"/>
+    <path d="M19 190l6-7 5 7zM31 190l5-7 6 7zM17 199l5 4 4-4 4 4 4-4 4 4 5-4c-2 9-7 12-13 12s-11-3-13-12z" fill="#ffe9a3"/>
+    <path d="M168 120v18" stroke="#d8c370" stroke-width="1.500"/>
+    <circle cx="168" cy="162" r="20" fill="none" stroke="#2f6b49" stroke-width="11"/>
+    <circle cx="168" cy="162" r="20" fill="none" stroke="#5fb37c" stroke-width="4" stroke-dasharray="3 6"/>
+    <g fill="#e0485a"><circle cx="152" cy="150" r="2.800"/><circle cx="186" cy="156" r="2.800"/><circle cx="158" cy="179" r="2.800"/><circle cx="181" cy="176" r="2.800"/><circle cx="168" cy="141" r="2.800"/>
+      <path d="M168 181l-11-6v13zM168 181l11-6v13zM165 183l-3 12 6-4 6 4-3-12z"/></g>
+  </g></svg>`;
+
 // A graveyard skyline for the bottom of the header: tombstones, crosses, a bare tree and an iron fence.
 function skyline() {
   const stones = [[90, 34, 46], [210, 26, 38], [300, 40, 52], [520, 30, 40], [640, 44, 50], [860, 28, 42], [1010, 38, 48], [1120, 24, 36]]
@@ -38,6 +76,7 @@ function renderChrome() {
         <p class="wordmark">Job Watcher</p>
         <p class="tagline">Investment and banking analyst openings at 25 firms, dug up fresh every morning.</p>
       </div>
+      ${SCARECROW}
       ${skyline()}
     </div>
     <div class="navbar"><nav class="nav" aria-label="Pages">${links}</nav></div>`;
