@@ -1,7 +1,7 @@
 // Service worker: makes the site installable and lets it open offline.
 // Data files: network first, so online visits always get fresh data; the last copy is kept for offline.
 // Everything else (pages, styles, scripts, fonts): saved copy first, refreshed in the background.
-const CACHE = "job-watcher-v1";
+const CACHE = "job-watcher-v2";
 const SHELL = [
   "./", "index.html", "browse.html", "market.html", "style.css",
   "app.js", "today.js", "browse.js", "charts.js", "market.js",

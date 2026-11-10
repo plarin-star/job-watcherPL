@@ -20,8 +20,8 @@ loadData().then(({ status, rows, lastDay }) => {
   const fill = (id, headId, label, list, empty) => {
     document.getElementById(headId).textContent = `${label} (${list.length.toLocaleString()})`;
     const shown = list.slice(0, 200).map(r => postingItem(r)).join("");
-    const rest = list.length > 200 ? `<li><span></span><span class="muted">…and ${list.length - 200} more. See Browse for everything open.</span></li>` : "";
-    document.getElementById(id).innerHTML = list.length ? shown + rest : `<li><span></span><span class="muted">${empty}</span></li>`;
+    const rest = list.length > 200 ? `<li class="plain"><span></span><span class="muted">…and ${list.length - 200} more. See Browse for everything open.</span></li>` : "";
+    document.getElementById(id).innerHTML = list.length ? shown + rest : `<li class="plain"><span></span><span class="muted">${empty}</span></li>`;
   };
   const firstDay = status.days_with_success <= 1;
   fill("new", "new-h", "New postings", fresh, firstDay
