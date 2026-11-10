@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Browse · Job Watcher</title>
+<meta name="description" content="Daily tracker of investment and banking analyst job postings at 25 firms.">
+<meta name="theme-color" content="#120d1a">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>Browse open postings</h1>
+  <p class="lede">Every posting that was still open at the last run. Star the ones you like; your shortlist stays in this browser.</p>
+  <div class="switch" role="group" aria-label="Which postings to show">
+    <button type="button" id="show-role" aria-pressed="true">My role</button>
+    <button type="button" id="show-all" aria-pressed="false">All postings</button>
+    <button type="button" id="show-starred" aria-pressed="false">★ Shortlist</button>
+  </div>
+  <section class="panel">
+    <div class="filters">
+      <label>Search titles<input type="search" id="q" placeholder="equity research, M&amp;A…"></label>
+      <label>Employer<select id="employer"></select></label>
+      <label>Location<select id="location"></select></label>
+      <label>Days open<select id="days">
+        <option value="">Any</option><option value="0-1">Today or yesterday</option>
+        <option value="0-3">3 days or less</option><option value="0-7">7 days or less</option>
+        <option value="8-9999">More than 7 days</option></select></label>
+      <label>Sort by first seen<select id="sort">
+        <option value="new">Newest first</option><option value="old">Oldest first</option></select></label>
+    </div>
+    <p class="resultline" id="resultline"></p>
+  </section>
+  <section class="panel"><ul class="postings" id="list"></ul><button type="button" class="more" id="more" hidden>Show more</button></section>
+</main>
+<script src="app.js"></script>
+<script src="browse.js"></script>
+</body>
+</html>
