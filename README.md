@@ -11,7 +11,7 @@ is new and what is gone, and publishes the result.
 
 ## How it works
 
-GitHub Actions runs the pipeline once a day at 12:23 UTC. Each run:
+GitHub Actions runs the pipeline every day at 09:07 UTC, with a backup run at 15:07 UTC in case GitHub starts the first one late or skips it (the second run replaces the first, so the day counts once). Each run:
 
 1. **Fetches** every source and saves what it returns, compressed, in
    `data/raw/<UTC date>/<source>.json.gz`. A source that fails writes no raw file and does not stop
@@ -99,6 +99,13 @@ Goldman Sachs keeps the level (Analyst, Associate, Vice President) in a separate
 converter adds it to the title before the rule is applied. The rule lives in
 `watcher/title_rule.py`. Every posting a board returns is kept in the history; the rule only sets
 the `in_role` column.
+
+## My states
+
+The Today and Browse pages focus on nine states: Washington, Arizona, Texas, Illinois, Pennsylvania,
+Massachusetts, New York, New Jersey and North Carolina. Browse opens on these states and can be
+switched to "Anywhere". This is a display filter only (`myState` in `app.js`): the history file
+keeps every posting every board returns, wherever it is.
 
 ## Files
 

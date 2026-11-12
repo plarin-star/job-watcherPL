@@ -187,6 +187,36 @@ const fmtDay = d => new Date(d + "T00:00:00Z").toLocaleDateString(undefined, { m
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const plural = (n, word) => `${n.toLocaleString()} ${word}${n === 1 ? "" : "s"}`;
 
+// My states: the places I want to work. Used to focus the Today and Browse pages.
+// The history file still keeps every posting from everywhere; this only changes what is shown first.
+const MY_STATES = [
+  { name: "Washington", code: "WA", cities: ["seattle", "bellevue", "redmond", "tacoma"] },
+  { name: "Arizona", code: "AZ", cities: ["phoenix", "scottsdale", "tempe", "chandler", "tucson"] },
+  { name: "Texas", code: "TX", cities: ["dallas", "houston", "austin", "plano", "irving", "san antonio", "fort worth"] },
+  { name: "Illinois", code: "IL", cities: ["chicago"] },
+  { name: "Pennsylvania", code: "PA", cities: ["philadelphia", "pittsburgh"] },
+  { name: "Massachusetts", code: "MA", cities: ["boston"] },
+  { name: "New York", code: "NY", cities: ["manhattan", "brooklyn"] },
+  { name: "New Jersey", code: "NJ", cities: ["jersey city", "hoboken"] },
+  { name: "North Carolina", code: "NC", cities: ["charlotte", "raleigh"] },
+];
+
+// Which of my states a location is in ("" if none). Locations are written many ways:
+// "New York, NY, United States", "Charlotte, North Carolina", "US-TX-Dallas", "Chicago".
+function myState(location) {
+  const text = String(location || "");
+  const lower = text.toLowerCase();
+  const codes = new Set(text.replace(/[^A-Za-z]+/g, " ").split(" ").filter(t => t.length === 2 && (t === t.toUpperCase())));
+  const isDC = /\bD\.?C\.?\b|district of columbia/i.test(text);
+  for (const st of MY_STATES) {
+    const name = st.name.toLowerCase();
+    if (codes.has(st.code)) return st.name;
+    if (lower.includes(name) && !(name === "washington" && isDC)) return st.name;
+    if (st.cities.some(c => new RegExp(`(^|[^a-z])${c}([^a-z]|$)`).test(lower))) return st.name;
+  }
+  return "";
+}
+
 // Shortlist: posting ids saved in this browser.
 const Shortlist = {
   key: "job-watcher-shortlist",

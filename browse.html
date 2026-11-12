@@ -14,7 +14,7 @@
 <body>
 <main>
   <h1>Browse open postings</h1>
-  <p class="lede">Every posting that was still open at the last run. Star the ones you like to keep a shortlist in this browser, then mark each one Applied, Interviewing or Rejected.</p>
+  <p class="lede">Every posting that was still open at the last run, focused on my nine states: Washington, Arizona, Texas, Illinois, Pennsylvania, Massachusetts, New York, New Jersey and North Carolina. Switch Where to Anywhere to see the rest. Star the ones you like to keep a shortlist in this browser, then mark each one Applied, Interviewing or Rejected.</p>
   <div class="switch" role="group" aria-label="Which postings to show">
     <button type="button" id="show-role" aria-pressed="true">My role</button>
     <button type="button" id="show-all" aria-pressed="false">All postings</button>
@@ -23,6 +23,7 @@
   <section class="panel">
     <div class="filters">
       <label class="gate">Search<span class="gate-frame"><input type="search" id="q" placeholder="Search titles: equity research, M&amp;A, private equity…"></span></label>
+      <label>Where<select id="region"><option value="mine">My states</option><option value="any">Anywhere</option></select></label>
       <label>Employer<select id="employer"></select></label>
       <label>Location<select id="location"></select></label>
       <label>Days open<select id="days">

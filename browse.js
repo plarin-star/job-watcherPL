@@ -1,7 +1,7 @@
 // Browse page: open postings with a role switch, filters, title search, sort, apply links and a shortlist.
 loadData().then(({ rows, lastDay }) => {
   const open = rows.filter(r => r.status === "open");
-  for (const r of open) r.days_open = daysBetween(r.first_seen, lastDay);
+  for (const r of open) { r.days_open = daysBetween(r.first_seen, lastDay); r.my_state = myState(r.location); }
   const $ = id => document.getElementById(id);
   const state = { view: "role", limit: 100 };
   let starred = Shortlist.all();
@@ -17,7 +17,8 @@ loadData().then(({ rows, lastDay }) => {
     if ([...el.options].some(o => o.value === keep)) el.value = keep;
   };
 
-  const inView = r => state.view === "all" || (state.view === "role" && r.in_role) || (state.view === "starred" && starred.has(r.posting_id));
+  const inRegion = r => $("region").value === "any" || r.my_state !== "";
+  const inView = r => inRegion(r) && (state.view === "all" || (state.view === "role" && r.in_role) || (state.view === "starred" && starred.has(r.posting_id)));
 
   function refreshOptions() {
     const pool = open.filter(inView);
@@ -58,6 +59,7 @@ loadData().then(({ rows, lastDay }) => {
   $("show-role").onclick = () => setView("role");
   $("show-all").onclick = () => setView("all");
   $("show-starred").onclick = () => setView("starred");
+  $("region").addEventListener("input", () => { state.limit = 100; refreshOptions(); render(); });
   for (const id of ["q", "employer", "location", "days", "sort"])
     $(id).addEventListener("input", () => { state.limit = 100; render(); });
   $("more").onclick = () => { state.limit += 200; render(); };

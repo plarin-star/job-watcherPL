@@ -14,7 +14,9 @@ loadData().then(({ status, rows, lastDay }) => {
   document.getElementById("counts").innerHTML = counts.map(([cls, n, label]) =>
     `<div class="count ${cls}"><b>${Number(n).toLocaleString()}</b><span>${label}</span></div>`).join("");
 
-  const byRole = (a, b) => (b.in_role - a.in_role) || a.employer.localeCompare(b.employer) || a.title.localeCompare(b.title);
+  // postings in my role and in my states come first
+  const rank = r => (r.in_role ? 2 : 0) + (myState(r.location) ? 1 : 0);
+  const byRole = (a, b) => (rank(b) - rank(a)) || a.employer.localeCompare(b.employer) || a.title.localeCompare(b.title);
   const fresh = rows.filter(r => r.first_seen === lastDay && !r.first_run).sort(byRole);
   const gone = rows.filter(r => r.removed_date === lastDay).sort(byRole);
   const fill = (id, headId, label, list, empty) => {
