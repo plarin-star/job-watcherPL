@@ -2,7 +2,10 @@ name: Daily run
 
 on:
   schedule:
-    - cron: "23 12 * * *"   # every day at 12:23 UTC (6:23 am Central)
+    # GitHub can start scheduled runs hours late, and a run takes the UTC date of the moment it runs.
+    # Two runs a day keep every UTC day covered; the second replaces the first, so the day counts once.
+    - cron: "7 9 * * *"    # 09:07 UTC (3:07 am Central)
+    - cron: "7 15 * * *"   # 15:07 UTC (9:07 am Central), backup
   workflow_dispatch:
   push:   # also run when this file changes, so a change can be tested right away
     branches: [main]
