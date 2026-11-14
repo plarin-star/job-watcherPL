@@ -1,0 +1,156 @@
+{
+  "run_time": "2026-11-14T15:44:57Z",
+  "date": "2026-11-14",
+  "sources": [
+    {
+      "name": "goldmansachs",
+      "ok": true,
+      "count": 757,
+      "error": null
+    },
+    {
+      "name": "jpmorgan",
+      "ok": true,
+      "count": 995,
+      "error": null
+    },
+    {
+      "name": "morganstanley",
+      "ok": true,
+      "count": 1179,
+      "error": null
+    },
+    {
+      "name": "bankofamerica",
+      "ok": true,
+      "count": 2009,
+      "error": null
+    },
+    {
+      "name": "wellsfargo",
+      "ok": false,
+      "count": 0,
+      "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+    },
+    {
+      "name": "barclays",
+      "ok": true,
+      "count": 652,
+      "error": null
+    },
+    {
+      "name": "deutschebank",
+      "ok": true,
+      "count": 1186,
+      "error": null
+    },
+    {
+      "name": "deloitte",
+      "ok": true,
+      "count": 280,
+      "error": null
+    },
+    {
+      "name": "raymondjames",
+      "ok": true,
+      "count": 302,
+      "error": null
+    },
+    {
+      "name": "houlihanlokey",
+      "ok": true,
+      "count": 50,
+      "error": null
+    },
+    {
+      "name": "pjtpartners",
+      "ok": true,
+      "count": 53,
+      "error": null
+    },
+    {
+      "name": "williamblair",
+      "ok": true,
+      "count": 48,
+      "error": null
+    },
+    {
+      "name": "lincolninternational",
+      "ok": true,
+      "count": 36,
+      "error": null
+    },
+    {
+      "name": "rbc",
+      "ok": true,
+      "count": 788,
+      "error": null
+    },
+    {
+      "name": "bmo",
+      "ok": true,
+      "count": 1036,
+      "error": null
+    },
+    {
+      "name": "blackrock",
+      "ok": false,
+      "count": 0,
+      "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+    },
+    {
+      "name": "blackstone",
+      "ok": true,
+      "count": 142,
+      "error": null
+    },
+    {
+      "name": "fidelity",
+      "ok": false,
+      "count": 0,
+      "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+    },
+    {
+      "name": "troweprice",
+      "ok": true,
+      "count": 128,
+      "error": null
+    },
+    {
+      "name": "pimco",
+      "ok": true,
+      "count": 157,
+      "error": null
+    },
+    {
+      "name": "carlyle",
+      "ok": true,
+      "count": 63,
+      "error": null
+    },
+    {
+      "name": "point72",
+      "ok": true,
+      "count": 200,
+      "error": null
+    },
+    {
+      "name": "ares",
+      "ok": false,
+      "count": 0,
+      "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+    },
+    {
+      "name": "invesco",
+      "ok": false,
+      "count": 0,
+      "error": "JSONDecodeError('Expecting value: line 1 column 1 (char 0)')"
+    },
+    {
+      "name": "vanguard",
+      "ok": true,
+      "count": 317,
+      "error": null
+    }
+  ]
+}
