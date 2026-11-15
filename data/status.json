@@ -1,10 +1,10 @@
 {
-  "run_time": "2026-11-15T16:17:33Z",
+  "run_time": "2026-11-15T20:16:21Z",
   "first_run_date": "2026-11-10",
   "days_with_success": 6,
-  "open": 13307,
-  "new_today": 3,
-  "removed_today": 108,
+  "open": 13286,
+  "new_today": 5,
+  "removed_today": 132,
   "sources": [
     {
       "name": "goldmansachs",
@@ -29,12 +29,12 @@
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1365
+      "count": 1352
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 647
+      "count": 645
     },
     {
       "name": "deutschebank",
@@ -79,22 +79,22 @@
     {
       "name": "bmo",
       "ok": true,
-      "count": 1023
+      "count": 1025
     },
     {
       "name": "blackrock",
       "ok": true,
-      "count": 273
+      "count": 271
     },
     {
       "name": "blackstone",
       "ok": true,
-      "count": 142
+      "count": 140
     },
     {
       "name": "fidelity",
       "ok": true,
-      "count": 892
+      "count": 890
     },
     {
       "name": "troweprice",
@@ -124,12 +124,12 @@
     {
       "name": "invesco",
       "ok": true,
-      "count": 204
+      "count": 203
     },
     {
       "name": "vanguard",
       "ok": true,
-      "count": 314
+      "count": 313
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "run_time": "2026-11-15T16:17:33Z",
+  "run_time": "2026-11-15T20:16:21Z",
   "date": "2026-11-15",
   "sources": [
     {
@@ -29,13 +29,13 @@
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1365,
+      "count": 1352,
       "error": null
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 647,
+      "count": 645,
       "error": null
     },
     {
@@ -89,25 +89,25 @@
     {
       "name": "bmo",
       "ok": true,
-      "count": 1023,
+      "count": 1025,
       "error": null
     },
     {
       "name": "blackrock",
       "ok": true,
-      "count": 273,
+      "count": 271,
       "error": null
     },
     {
       "name": "blackstone",
       "ok": true,
-      "count": 142,
+      "count": 140,
       "error": null
     },
     {
       "name": "fidelity",
       "ok": true,
-      "count": 892,
+      "count": 890,
       "error": null
     },
     {
@@ -143,13 +143,13 @@
     {
       "name": "invesco",
       "ok": true,
-      "count": 204,
+      "count": 203,
       "error": null
     },
     {
       "name": "vanguard",
       "ok": true,
-      "count": 314,
+      "count": 313,
       "error": null
     }
   ]
