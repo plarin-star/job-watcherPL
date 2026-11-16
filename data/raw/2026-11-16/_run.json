@@ -1,35 +1,35 @@
 {
-  "run_time": "2026-11-16T19:30:38Z",
+  "run_time": "2026-11-16T23:41:50Z",
   "date": "2026-11-16",
   "sources": [
     {
       "name": "goldmansachs",
       "ok": true,
-      "count": 759,
+      "count": 765,
       "error": null
     },
     {
       "name": "jpmorgan",
       "ok": true,
-      "count": 995,
+      "count": 1000,
       "error": null
     },
     {
       "name": "morganstanley",
       "ok": true,
-      "count": 1169,
+      "count": 1165,
       "error": null
     },
     {
       "name": "bankofamerica",
       "ok": true,
-      "count": 2004,
+      "count": 2007,
       "error": null
     },
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1288,
+      "count": 1345,
       "error": null
     },
     {
@@ -53,7 +53,7 @@
     {
       "name": "raymondjames",
       "ok": true,
-      "count": 297,
+      "count": 295,
       "error": null
     },
     {
@@ -71,7 +71,7 @@
     {
       "name": "williamblair",
       "ok": true,
-      "count": 48,
+      "count": 49,
       "error": null
     },
     {
@@ -83,13 +83,13 @@
     {
       "name": "rbc",
       "ok": true,
-      "count": 756,
+      "count": 771,
       "error": null
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 985,
+      "count": 1009,
       "error": null
     },
     {
@@ -107,19 +107,19 @@
     {
       "name": "fidelity",
       "ok": true,
-      "count": 887,
+      "count": 894,
       "error": null
     },
     {
       "name": "troweprice",
       "ok": true,
-      "count": 125,
+      "count": 127,
       "error": null
     },
     {
       "name": "pimco",
       "ok": true,
-      "count": 154,
+      "count": 153,
       "error": null
     },
     {
@@ -149,7 +149,7 @@
     {
       "name": "vanguard",
       "ok": true,
-      "count": 310,
+      "count": 312,
       "error": null
     }
   ]
