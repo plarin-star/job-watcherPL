@@ -33,12 +33,25 @@ loadData().then(({ status, rows, lastDay }) => {
   section(
     totalNew ? `${plural(totalNew, "new posting")} appeared, ${totalRole.toLocaleString()} of them in my role` : "No new postings have appeared yet",
     totalNew
-      ? `Each point is the number of postings first seen that day. Postings already open when a firm was first watched are left out. The busiest day was ${labels[allVals.indexOf(Math.max(...allVals))]} with ${Math.max(...allVals).toLocaleString()} new postings.`
+      ? `Postings first seen on each day. ${fmtDay(firstDay)} is zero by definition: everything listed on the first day was already open, so its start date is unknown. ` +
+        `The busiest day was ${labels[allVals.indexOf(Math.max(...allVals))]} with ${Math.max(...allVals).toLocaleString()} new postings. ` +
+        `My role is about ${Math.round((totalRole / totalNew) * 100) || "<1"}% of the flow, so it gets its own scale on the right.`
       : `New postings are counted from the day after a firm is first watched. ${early}`,
-    host => lines(host, labels, [
-      { name: "All postings", color: COLOR.all, values: allVals },
-      { name: "My role", color: COLOR.role, values: roleVals },
-    ]));
+    host => {
+      host.className = "pair";
+      const half = (title, values, color) => {
+        const box = document.createElement("div");
+        box.innerHTML = `<h3 class="chart-title">${title}</h3>`;
+        host.append(box);
+        barsV(box, days.map((d, i) => ({ label: labels[i], value: values[i] })), { color, W: 380, H: 230, unit: " new", table: false });
+      };
+      half("All postings", allVals, COLOR.all);
+      half("My role", roleVals, COLOR.role);
+      const tbl = document.createElement("div");
+      tbl.className = "pair-wide";
+      host.append(tbl);
+      dataTable(tbl, ["Day", "All postings", "My role"], days.map((d, i) => [labels[i], allVals[i], roleVals[i]]));
+    });
 
   // 2. Removed postings per day.
   const gone = countBy(rows.filter(r => r.removed_date), r => r.removed_date);
@@ -46,7 +59,7 @@ loadData().then(({ status, rows, lastDay }) => {
   section(
     totalGone ? `${plural(totalGone, "posting")} came down` : "No postings have been removed yet",
     totalGone
-      ? `A posting counts as removed on the first day its firm's board answers without it. The most removals came on ${labels[goneVals.indexOf(Math.max(...goneVals))]}.`
+      ? `A posting counts as removed on the first day its firm's board answers without it, so ${fmtDay(firstDay)} has none. The most removals came on ${labels[goneVals.indexOf(Math.max(...goneVals))]}.`
       : `A posting counts as removed on the first day its firm's board answers without it. ${early}`,
     host => barsV(host, days.map((d, i) => ({ label: labels[i], value: goneVals[i] })), { unit: " removed", tableHead: ["Day", "Removed"] }));
 
@@ -66,8 +79,8 @@ loadData().then(({ status, rows, lastDay }) => {
       ? `Based on ${plural(spans.length, "posting")} that the tool saw both appear and disappear: the removed date minus the first-seen date. The chart shows how many postings lasted each number of days.`
       : `This needs postings that the tool saw both appear and disappear. ${early}`,
     host => {
-      const max = spans.length ? spans[spans.length - 1] : 7, hist = countBy(spans, d => d);
-      const items = Array.from({ length: max + 1 }, (_, d) => ({ label: String(d), value: hist.get(d) || 0 }));
+      const lo = spans.length ? spans[0] : 1, max = spans.length ? spans[spans.length - 1] : 7, hist = countBy(spans, d => d);
+      const items = Array.from({ length: max - lo + 1 }, (_, i) => ({ label: plural(lo + i, "day"), value: hist.get(lo + i) || 0 }));
       barsV(host, items, { unit: " postings", tableHead: ["Days open", "Postings"] });
     });
 
@@ -75,22 +88,35 @@ loadData().then(({ status, rows, lastDay }) => {
   const eligible = tracked.filter(r => daysBetween(r.first_seen, lastDay) >= 7);
   const quick = eligible.filter(r => r.status === "removed" && r.removed_date && daysBetween(r.first_seen, r.removed_date) <= 7);
   const share = eligible.length ? quick.length / eligible.length : null;
+  const firstNew = tracked.map(r => r.first_seen).sort()[0];
+  const readyDay = firstNew ? new Date((dayNumber(firstNew) + 7) * 86400000).toISOString().slice(0, 10) : null;
   section(
     share === null ? "Not enough history yet to say how many postings close within a week"
       : `${Math.round(share * 100)}% of postings came down within seven days`,
     share === null
-      ? `This looks only at postings first seen at least seven days before the last run, so each one has had a full week to close. None are old enough yet. ${early}`
-      : `Of ${plural(eligible.length, "posting")} first seen at least seven days before the last run, ${quick.length.toLocaleString()} were removed seven days or less after they first appeared.`,
-    host => splitBar(host, [
-      { label: "Removed within 7 days", value: quick.length, color: COLOR.role },
-      { label: "Still up after 7 days", value: eligible.length - quick.length, color: COLOR.rest },
-    ]));
+      ? `This counts only postings first seen at least seven days before the last run, so each one has had a full week to close. ` +
+        (readyDay ? `The earliest new postings were first seen on ${fmtDay(firstNew)}, so they reach a full week at the ${fmtDay(readyDay)} run and this section fills in by itself from then.` : early)
+      : `Of ${plural(eligible.length, "posting")} first seen at least seven days before the last run, ${quick.length.toLocaleString()} were removed seven days or less after they first appeared. ` +
+        `First-run postings are left out because their start date is unknown.`,
+    host => share === null
+      ? (host.innerHTML = `<div class="chart-empty">Waiting for postings with a full week of history${readyDay ? ` · first data after the ${fmtDay(readyDay)} run` : ""}</div>`)
+      : splitBar(host, [
+          { label: "Removed within 7 days", value: quick.length, color: COLOR.role },
+          { label: "Still up after 7 days", value: eligible.length - quick.length, color: COLOR.rest },
+        ]));
 
   // 6. Top locations among open postings.
-  const places = top(countBy(open, r => r.location), 12);
-  const named = places.find(p => !/^\d+ Locations$/i.test(p.label));   // "2 Locations" is not a place
+  const notPlace = loc => /^\d+ Locations?$/i.test(loc);        // "2 Locations" is a count, not a place
+  const multi = open.filter(r => notPlace(r.location)).length;
+  const places = top(countBy(open.filter(r => !notPlace(r.location)), r => r.location), 12);
+  const city = loc => loc.split(",")[0].trim().toLowerCase();
+  const cities = top(countBy(open.filter(r => r.location && !notPlace(r.location)), r => city(r.location)), 1)[0];
+  const spellings = cities ? new Set(open.filter(r => city(r.location) === cities.label).map(r => r.location)).size : 0;
+  const cityName = cities ? cities.label.replace(/\b[a-z]/g, c => c.toUpperCase()) : "";
   section(
-    named ? `${named.label} is the top single location, with ${plural(named.value, "open posting")}` : "No locations to show",
-    `The twelve most common location values among the ${open.length.toLocaleString()} open postings, exactly as each firm writes them. Some firms write "2 Locations" when a posting is listed in several places, so those values appear in the chart too.`,
+    cities ? `${cityName} is the top city, with ${plural(cities.value, "open posting")}` : "No locations to show",
+    `The twelve most common locations among the ${open.length.toLocaleString()} open postings, written exactly as each firm writes them. ` +
+    (cities ? `Firms spell the same city differently, so ${cityName} appears ${spellings} ways; the headline adds those together. ` : "") +
+    (multi ? `${plural(multi, "posting")} list only a count such as "2 Locations" instead of a place, and are left out.` : ""),
     host => barsH(host, places, { unit: " open", tableHead: ["Location", "Open postings"] }));
 }).catch(showError);

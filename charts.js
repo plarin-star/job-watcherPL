@@ -55,8 +55,8 @@ function dataTable(host, head, rows) {
 }
 
 // Vertical bars. items: [{label, value}]
-function barsV(host, items, { unit = "", color = COLOR.all, tableHead = ["", "Count"] } = {}) {
-  const W = 760, H = 260, L = 48, R = 12, T = 18, B = 34;
+function barsV(host, items, { unit = "", color = COLOR.all, tableHead = ["", "Count"], W = 760, H = 260, table = true } = {}) {
+  const L = 48, R = 12, T = 18, B = 34;
   const { svg, hover } = chartShell(host, W, H);
   const max = niceMax(Math.max(1, ...items.map(d => d.value)));
   yAxis(svg, max, L, W - R, H - B, T);
@@ -75,7 +75,7 @@ function barsV(host, items, { unit = "", color = COLOR.all, tableHead = ["", "Co
     hover(hit, `${d.label}: ${d.value.toLocaleString()}${unit}`);
     svg.append(hit);
   });
-  dataTable(host, tableHead, items.map(d => [d.label, d.value]));
+  if (table) dataTable(host, tableHead, items.map(d => [d.label, d.value]));
 }
 
 // Horizontal bars. items: [{label, value}], largest first.

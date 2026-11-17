@@ -197,7 +197,7 @@ details.data .sources { margin-top: 0.7rem; }
 .switch button:hover { color: var(--bone); }
 .switch button[aria-pressed="true"] { color: var(--bone); border-bottom-color: var(--ivory); background: var(--slate); }
 
-.filters { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem 1.1rem; align-items: end; }
+.filters { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem 1.1rem; align-items: end; }
 .filters label { display: block; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; color: var(--gray); }
 .filters select {
   display: block; width: 100%; margin-top: 0.3rem;
@@ -231,6 +231,14 @@ details.data .sources { margin-top: 0.7rem; }
   background: #000; color: var(--bone); border: 1px solid var(--pewter); border-radius: 2px;
   padding: 0.3rem 0.65rem; font-size: 0.9rem; white-space: nowrap; transform: translate(-50%, -130%);
 }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2rem; margin-top: 0.9rem; }
+.pair .chart { margin-top: 0.2rem; }
+.pair-wide { grid-column: 1 / -1; }
+.chart-title { font: 600 0.82rem/1 var(--body); letter-spacing: 0.09em; text-transform: uppercase; color: var(--gray); margin: 0.4rem 0 0; }
+.chart-empty {
+  margin-top: 0.9rem; padding: 1.4rem 1rem; text-align: center; color: var(--gray);
+  border: 1px dashed var(--edge); border-radius: 2px; font-size: 0.95rem;
+}
 details.data { margin-top: 0.8rem; color: var(--gray); font-size: 0.95rem; }
 details.data summary { cursor: pointer; color: var(--ivory); }
 details.data table { border-collapse: collapse; margin-top: 0.5rem; }
@@ -259,7 +267,7 @@ footer { text-align: center; color: var(--gray); font-size: 0.9rem; padding: 0 1
       radial-gradient(circle at calc(100% - 1rem) 50%, #c4c7cd 0 0.16rem, #4a4d54 0.17rem 0.28rem, transparent 0.3rem),
       linear-gradient(165deg, #2a2c31, #17181b 70%);
   }
-  .two-col { grid-template-columns: 1fr; }
+  .two-col, .pair { grid-template-columns: 1fr; }
   .filters { grid-template-columns: 1fr 1fr; }
   .masthead-inner { padding-bottom: 5.6rem; }
   .tagline { padding-right: 7rem; }

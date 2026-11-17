@@ -43,9 +43,11 @@ loadData().then(({ rows, lastDay }) => {
       ? list.slice(0, state.limit).map(r => postingItem(r, {
           star: true, starred: starred.has(r.posting_id), apply: true,
           status: starred.has(r.posting_id) ? (statuses[r.posting_id] || "") : null,
-          note: r.first_run ? `open since before ${fmtDay(r.first_seen)}` : `first seen ${fmtDay(r.first_seen)}, ${plural(r.days_open, "day")} open`,
+          note: r.first_run ? `open since before ${fmtDay(r.first_seen)}`
+            : r.days_open === 0 ? `new in the latest run` : `first seen ${fmtDay(r.first_seen)}, ${plural(r.days_open, "day")} open`,
         })).join("")
       : `<li class="plain"><span></span><span class="muted">${state.view === "starred" ? "Your shortlist is empty. Star a posting to save it here, then mark it Applied, Interviewing or Rejected." : "No open postings match. Try clearing a filter."}</span></li>`;
+    $("list").classList.toggle("role-only", state.view === "role");   // every card is in my role here
     $("more").hidden = list.length <= state.limit;
     $("more").textContent = `Show more (${(list.length - state.limit).toLocaleString()} left)`;
   }
