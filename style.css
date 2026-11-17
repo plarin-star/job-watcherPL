@@ -110,6 +110,19 @@ h2 { font-size: 2.4rem; line-height: 1.05; margin: 0 0 0.7rem; }
 .count b, .count span { position: relative; z-index: 1; display: block; }
 .count b { font: 700 clamp(2.2rem, 4.6vw, 3.1rem)/1 var(--body); color: var(--bone); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
 .count span { color: var(--gray); font-size: 0.82rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; margin-top: 0.45rem; }
+.count small { position: relative; z-index: 1; display: block; color: var(--pumpkin); font-size: 0.88rem; font-weight: 600; margin-top: 0.35rem; }
+
+/* ---------- Today: the lists and the board summary ---------- */
+.list-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.list-head .section-title { margin: 0; }
+.list-head .switch { margin: 0; }
+h2 .n { font: 600 1rem/1 var(--body); color: var(--gray); letter-spacing: 0.04em; margin-left: 0.4rem; vertical-align: 0.35rem; }
+.role-only .tag { display: none; }   /* every card is in my role here, so the tag adds nothing */
+.hint { color: var(--gray); font-size: 0.95rem; margin: -0.4rem 0 1rem; }
+.src-line { margin: 0; display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap; }
+.src-line .bulb { align-self: center; }
+.src-line b { color: var(--bone); }
+details.data .sources { margin-top: 0.7rem; }
 
 .sources { display: grid; grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr)); gap: 0.3rem 1.5rem; list-style: none; padding: 0; margin: 0; }
 .sources li { display: flex; align-items: baseline; gap: 0.55rem; border-bottom: 1px solid var(--edge); padding: 0.3rem 0; }
@@ -236,9 +249,10 @@ footer { text-align: center; color: var(--gray); font-size: 0.9rem; padding: 0 1
 
 @media (max-width: 760px) {
   .counts { grid-template-columns: 1fr; gap: 0.6rem; }
-  .count { --cut: 0.7rem; display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; text-align: left; padding: 1rem 2.4rem 0.9rem; }
+  .count { --cut: 0.7rem; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 0 1rem; text-align: left; padding: 1rem 2.4rem 0.9rem; }
   .count b { font-size: 2.1rem; order: 2; }
   .count span { margin-top: 0; }
+  .count small { order: 3; flex-basis: 100%; margin-top: 0; }
   .count::before {
     background:
       radial-gradient(circle at 1rem 50%, #c4c7cd 0 0.16rem, #4a4d54 0.17rem 0.28rem, transparent 0.3rem),

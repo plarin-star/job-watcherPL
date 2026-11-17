@@ -15,12 +15,39 @@
 <main>
   <h1>Today</h1>
   <p class="lede" id="runline">Loading the latest run…</p>
+
   <div class="counts" id="counts"></div>
-  <div class="two-col">
-    <section class="panel"><h2 id="new-h">New postings</h2><ul class="postings" id="new"></ul></section>
-    <section class="panel"><h2 id="gone-h">Removed postings</h2><ul class="postings" id="gone"></ul></section>
+
+  <div class="list-head">
+    <h2 class="section-title">What changed since the last run</h2>
+    <div class="switch" role="group" aria-label="Which postings to list">
+      <button type="button" data-mode="role" aria-pressed="true">My role</button>
+      <button type="button" data-mode="all" aria-pressed="false">All postings</button>
+    </div>
   </div>
-  <section class="panel"><h2 id="src-h">Sources</h2><ul class="sources" id="sources"></ul></section>
+  <div class="two-col">
+    <section class="panel">
+      <h2 id="new-h">New postings</h2>
+      <p class="hint">On a board today, not on it yesterday.</p>
+      <ul class="postings" id="new"></ul>
+      <button type="button" class="more" id="new-more" hidden></button>
+    </section>
+    <section class="panel">
+      <h2 id="gone-h">Removed postings</h2>
+      <p class="hint">Taken down today, usually because the job was filled or closed.</p>
+      <ul class="postings" id="gone"></ul>
+      <button type="button" class="more" id="gone-more" hidden></button>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h2 id="src-h">Job boards</h2>
+    <p class="src-line" id="src-line"></p>
+    <details class="data">
+      <summary>Status of each board</summary>
+      <ul class="sources" id="sources"></ul>
+    </details>
+  </section>
 </main>
 <script src="app.js"></script>
 <script src="today.js"></script>
