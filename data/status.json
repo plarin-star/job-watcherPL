@@ -1,55 +1,55 @@
 {
-  "run_time": "2026-11-18T17:57:35Z",
+  "run_time": "2026-11-18T22:32:49Z",
   "first_run_date": "2026-11-10",
   "days_with_success": 9,
-  "open": 13424,
-  "new_today": 350,
-  "removed_today": 386,
+  "open": 13465,
+  "new_today": 494,
+  "removed_today": 509,
   "sources": [
     {
       "name": "goldmansachs",
       "ok": true,
-      "count": 742
+      "count": 737
     },
     {
       "name": "jpmorgan",
       "ok": true,
-      "count": 993
+      "count": 991
     },
     {
       "name": "morganstanley",
       "ok": true,
-      "count": 1155
+      "count": 1157
     },
     {
       "name": "bankofamerica",
       "ok": true,
-      "count": 1993
+      "count": 1992
     },
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1457
+      "count": 1484
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 690
+      "count": 685
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1188
+      "count": 1177
     },
     {
       "name": "deloitte",
       "ok": true,
-      "count": 284
+      "count": 283
     },
     {
       "name": "raymondjames",
       "ok": true,
-      "count": 296
+      "count": 297
     },
     {
       "name": "houlihanlokey",
@@ -69,57 +69,57 @@
     {
       "name": "lincolninternational",
       "ok": true,
-      "count": 35
+      "count": 36
     },
     {
       "name": "rbc",
       "ok": true,
-      "count": 782
+      "count": 797
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1029
+      "count": 1045
     },
     {
       "name": "blackrock",
       "ok": true,
-      "count": 282
+      "count": 280
     },
     {
       "name": "blackstone",
       "ok": true,
-      "count": 140
+      "count": 138
     },
     {
       "name": "fidelity",
       "ok": true,
-      "count": 892
+      "count": 896
     },
     {
       "name": "troweprice",
       "ok": true,
-      "count": 129
+      "count": 132
     },
     {
       "name": "pimco",
       "ok": true,
-      "count": 152
+      "count": 151
     },
     {
       "name": "carlyle",
       "ok": true,
-      "count": 63
+      "count": 64
     },
     {
       "name": "point72",
       "ok": true,
-      "count": 201
+      "count": 202
     },
     {
       "name": "ares",
       "ok": true,
-      "count": 234
+      "count": 236
     },
     {
       "name": "invesco",
@@ -129,7 +129,7 @@
     {
       "name": "vanguard",
       "ok": true,
-      "count": 328
+      "count": 326
     }
   ]
 }
