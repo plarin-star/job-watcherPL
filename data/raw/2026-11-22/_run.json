@@ -1,5 +1,5 @@
 {
-  "run_time": "2026-11-22T17:03:38Z",
+  "run_time": "2026-11-22T20:58:56Z",
   "date": "2026-11-22",
   "sources": [
     {
@@ -29,19 +29,19 @@
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1494,
+      "count": 1484,
       "error": null
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 646,
+      "count": 640,
       "error": null
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1171,
+      "count": 1170,
       "error": null
     },
     {
@@ -149,7 +149,7 @@
     {
       "name": "vanguard",
       "ok": true,
-      "count": 330,
+      "count": 326,
       "error": null
     }
   ]
