@@ -1,5 +1,5 @@
 {
-  "run_time": "2026-11-24T20:06:17Z",
+  "run_time": "2026-11-24T23:50:00Z",
   "date": "2026-11-24",
   "sources": [
     {
@@ -11,37 +11,37 @@
     {
       "name": "jpmorgan",
       "ok": true,
-      "count": 977,
+      "count": 979,
       "error": null
     },
     {
       "name": "morganstanley",
       "ok": true,
-      "count": 1129,
+      "count": 1130,
       "error": null
     },
     {
       "name": "bankofamerica",
       "ok": true,
-      "count": 2001,
+      "count": 2008,
       "error": null
     },
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1481,
+      "count": 1534,
       "error": null
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 643,
+      "count": 644,
       "error": null
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1169,
+      "count": 1166,
       "error": null
     },
     {
@@ -53,7 +53,7 @@
     {
       "name": "raymondjames",
       "ok": true,
-      "count": 302,
+      "count": 304,
       "error": null
     },
     {
@@ -83,31 +83,31 @@
     {
       "name": "rbc",
       "ok": true,
-      "count": 778,
+      "count": 783,
       "error": null
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1033,
+      "count": 1053,
       "error": null
     },
     {
       "name": "blackrock",
       "ok": true,
-      "count": 292,
+      "count": 293,
       "error": null
     },
     {
       "name": "blackstone",
       "ok": true,
-      "count": 134,
+      "count": 133,
       "error": null
     },
     {
       "name": "fidelity",
       "ok": true,
-      "count": 864,
+      "count": 870,
       "error": null
     },
     {
@@ -131,25 +131,25 @@
     {
       "name": "point72",
       "ok": true,
-      "count": 201,
+      "count": 202,
       "error": null
     },
     {
       "name": "ares",
       "ok": true,
-      "count": 222,
+      "count": 223,
       "error": null
     },
     {
       "name": "invesco",
       "ok": true,
-      "count": 209,
+      "count": 210,
       "error": null
     },
     {
       "name": "vanguard",
       "ok": true,
-      "count": 329,
+      "count": 333,
       "error": null
     }
   ]
