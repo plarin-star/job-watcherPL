@@ -1,0 +1,156 @@
+{
+  "run_time": "2026-11-24T02:06:21Z",
+  "date": "2026-11-24",
+  "sources": [
+    {
+      "name": "goldmansachs",
+      "ok": true,
+      "count": 749,
+      "error": null
+    },
+    {
+      "name": "jpmorgan",
+      "ok": true,
+      "count": 968,
+      "error": null
+    },
+    {
+      "name": "morganstanley",
+      "ok": true,
+      "count": 1139,
+      "error": null
+    },
+    {
+      "name": "bankofamerica",
+      "ok": true,
+      "count": 1973,
+      "error": null
+    },
+    {
+      "name": "wellsfargo",
+      "ok": true,
+      "count": 1484,
+      "error": null
+    },
+    {
+      "name": "barclays",
+      "ok": true,
+      "count": 631,
+      "error": null
+    },
+    {
+      "name": "deutschebank",
+      "ok": true,
+      "count": 1172,
+      "error": null
+    },
+    {
+      "name": "deloitte",
+      "ok": true,
+      "count": 279,
+      "error": null
+    },
+    {
+      "name": "raymondjames",
+      "ok": true,
+      "count": 307,
+      "error": null
+    },
+    {
+      "name": "houlihanlokey",
+      "ok": true,
+      "count": 49,
+      "error": null
+    },
+    {
+      "name": "pjtpartners",
+      "ok": true,
+      "count": 43,
+      "error": null
+    },
+    {
+      "name": "williamblair",
+      "ok": true,
+      "count": 47,
+      "error": null
+    },
+    {
+      "name": "lincolninternational",
+      "ok": true,
+      "count": 39,
+      "error": null
+    },
+    {
+      "name": "rbc",
+      "ok": true,
+      "count": 757,
+      "error": null
+    },
+    {
+      "name": "bmo",
+      "ok": true,
+      "count": 1029,
+      "error": null
+    },
+    {
+      "name": "blackrock",
+      "ok": true,
+      "count": 280,
+      "error": null
+    },
+    {
+      "name": "blackstone",
+      "ok": true,
+      "count": 138,
+      "error": null
+    },
+    {
+      "name": "fidelity",
+      "ok": true,
+      "count": 874,
+      "error": null
+    },
+    {
+      "name": "troweprice",
+      "ok": true,
+      "count": 136,
+      "error": null
+    },
+    {
+      "name": "pimco",
+      "ok": true,
+      "count": 142,
+      "error": null
+    },
+    {
+      "name": "carlyle",
+      "ok": true,
+      "count": 63,
+      "error": null
+    },
+    {
+      "name": "point72",
+      "ok": true,
+      "count": 201,
+      "error": null
+    },
+    {
+      "name": "ares",
+      "ok": true,
+      "count": 219,
+      "error": null
+    },
+    {
+      "name": "invesco",
+      "ok": true,
+      "count": 211,
+      "error": null
+    },
+    {
+      "name": "vanguard",
+      "ok": true,
+      "count": 330,
+      "error": null
+    }
+  ]
+}
