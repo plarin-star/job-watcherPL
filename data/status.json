@@ -1,50 +1,50 @@
 {
-  "run_time": "2026-11-25T23:32:39Z",
+  "run_time": "2026-11-26T18:57:23Z",
   "first_run_date": "2026-11-10",
-  "days_with_success": 16,
-  "open": 13491,
-  "new_today": 415,
-  "removed_today": 438,
+  "days_with_success": 17,
+  "open": 13422,
+  "new_today": 151,
+  "removed_today": 261,
   "sources": [
     {
       "name": "goldmansachs",
       "ok": true,
-      "count": 770
+      "count": 781
     },
     {
       "name": "jpmorgan",
       "ok": true,
-      "count": 963
+      "count": 956
     },
     {
       "name": "morganstanley",
       "ok": true,
-      "count": 1130
+      "count": 1119
     },
     {
       "name": "bankofamerica",
       "ok": true,
-      "count": 1994
+      "count": 1990
     },
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1603
+      "count": 1552
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 654
+      "count": 661
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1151
+      "count": 1152
     },
     {
       "name": "deloitte",
       "ok": true,
-      "count": 280
+      "count": 279
     },
     {
       "name": "raymondjames",
@@ -74,17 +74,17 @@
     {
       "name": "rbc",
       "ok": true,
-      "count": 805
+      "count": 814
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1056
+      "count": 1042
     },
     {
       "name": "blackrock",
       "ok": true,
-      "count": 292
+      "count": 295
     },
     {
       "name": "blackstone",
@@ -94,7 +94,7 @@
     {
       "name": "fidelity",
       "ok": true,
-      "count": 860
+      "count": 856
     },
     {
       "name": "troweprice",
@@ -104,7 +104,7 @@
     {
       "name": "pimco",
       "ok": true,
-      "count": 142
+      "count": 144
     },
     {
       "name": "carlyle",
@@ -119,17 +119,17 @@
     {
       "name": "ares",
       "ok": true,
-      "count": 227
+      "count": 225
     },
     {
       "name": "invesco",
       "ok": true,
-      "count": 211
+      "count": 208
     },
     {
       "name": "vanguard",
       "ok": true,
-      "count": 333
+      "count": 328
     }
   ]
 }
