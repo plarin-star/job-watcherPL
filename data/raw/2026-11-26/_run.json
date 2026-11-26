@@ -1,5 +1,5 @@
 {
-  "run_time": "2026-11-26T18:57:23Z",
+  "run_time": "2026-11-26T23:40:30Z",
   "date": "2026-11-26",
   "sources": [
     {
@@ -29,19 +29,19 @@
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1552,
+      "count": 1549,
       "error": null
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 661,
+      "count": 660,
       "error": null
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1152,
+      "count": 1148,
       "error": null
     },
     {
@@ -83,13 +83,13 @@
     {
       "name": "rbc",
       "ok": true,
-      "count": 814,
+      "count": 824,
       "error": null
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1042,
+      "count": 1060,
       "error": null
     },
     {

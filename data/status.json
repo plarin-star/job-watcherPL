@@ -1,10 +1,10 @@
 {
-  "run_time": "2026-11-26T18:57:23Z",
+  "run_time": "2026-11-26T23:40:30Z",
   "first_run_date": "2026-11-10",
   "days_with_success": 17,
-  "open": 13422,
-  "new_today": 151,
-  "removed_today": 261,
+  "open": 13442,
+  "new_today": 185,
+  "removed_today": 275,
   "sources": [
     {
       "name": "goldmansachs",
@@ -29,17 +29,17 @@
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1552
+      "count": 1549
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 661
+      "count": 660
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1152
+      "count": 1148
     },
     {
       "name": "deloitte",
@@ -74,12 +74,12 @@
     {
       "name": "rbc",
       "ok": true,
-      "count": 814
+      "count": 824
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1042
+      "count": 1060
     },
     {
       "name": "blackrock",
