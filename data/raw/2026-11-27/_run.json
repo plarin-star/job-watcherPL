@@ -1,53 +1,53 @@
 {
-  "run_time": "2026-11-27T18:52:05Z",
+  "run_time": "2026-11-27T23:20:45Z",
   "date": "2026-11-27",
   "sources": [
     {
       "name": "goldmansachs",
       "ok": true,
-      "count": 781,
+      "count": 780,
       "error": null
     },
     {
       "name": "jpmorgan",
       "ok": true,
-      "count": 956,
+      "count": 961,
       "error": null
     },
     {
       "name": "morganstanley",
       "ok": true,
-      "count": 1097,
+      "count": 1095,
       "error": null
     },
     {
       "name": "bankofamerica",
       "ok": true,
-      "count": 1980,
+      "count": 1978,
       "error": null
     },
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1399,
+      "count": 1416,
       "error": null
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 676,
+      "count": 677,
       "error": null
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1152,
+      "count": 1151,
       "error": null
     },
     {
       "name": "deloitte",
       "ok": true,
-      "count": 281,
+      "count": 277,
       "error": null
     },
     {
@@ -77,19 +77,19 @@
     {
       "name": "lincolninternational",
       "ok": true,
-      "count": 44,
+      "count": 42,
       "error": null
     },
     {
       "name": "rbc",
       "ok": true,
-      "count": 799,
+      "count": 812,
       "error": null
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1016,
+      "count": 1029,
       "error": null
     },
     {
@@ -107,13 +107,13 @@
     {
       "name": "fidelity",
       "ok": true,
-      "count": 849,
+      "count": 850,
       "error": null
     },
     {
       "name": "troweprice",
       "ok": true,
-      "count": 141,
+      "count": 142,
       "error": null
     },
     {
@@ -143,7 +143,7 @@
     {
       "name": "invesco",
       "ok": true,
-      "count": 209,
+      "count": 208,
       "error": null
     },
     {

@@ -1,50 +1,50 @@
 {
-  "run_time": "2026-11-27T18:52:05Z",
+  "run_time": "2026-11-27T23:20:45Z",
   "first_run_date": "2026-11-10",
   "days_with_success": 18,
-  "open": 13207,
-  "new_today": 172,
-  "removed_today": 453,
+  "open": 13245,
+  "new_today": 209,
+  "removed_today": 463,
   "sources": [
     {
       "name": "goldmansachs",
       "ok": true,
-      "count": 781
+      "count": 780
     },
     {
       "name": "jpmorgan",
       "ok": true,
-      "count": 956
+      "count": 961
     },
     {
       "name": "morganstanley",
       "ok": true,
-      "count": 1097
+      "count": 1095
     },
     {
       "name": "bankofamerica",
       "ok": true,
-      "count": 1980
+      "count": 1978
     },
     {
       "name": "wellsfargo",
       "ok": true,
-      "count": 1399
+      "count": 1416
     },
     {
       "name": "barclays",
       "ok": true,
-      "count": 676
+      "count": 677
     },
     {
       "name": "deutschebank",
       "ok": true,
-      "count": 1152
+      "count": 1151
     },
     {
       "name": "deloitte",
       "ok": true,
-      "count": 281
+      "count": 277
     },
     {
       "name": "raymondjames",
@@ -69,17 +69,17 @@
     {
       "name": "lincolninternational",
       "ok": true,
-      "count": 44
+      "count": 42
     },
     {
       "name": "rbc",
       "ok": true,
-      "count": 799
+      "count": 812
     },
     {
       "name": "bmo",
       "ok": true,
-      "count": 1016
+      "count": 1029
     },
     {
       "name": "blackrock",
@@ -94,12 +94,12 @@
     {
       "name": "fidelity",
       "ok": true,
-      "count": 849
+      "count": 850
     },
     {
       "name": "troweprice",
       "ok": true,
-      "count": 141
+      "count": 142
     },
     {
       "name": "pimco",
@@ -124,7 +124,7 @@
     {
       "name": "invesco",
       "ok": true,
-      "count": 209
+      "count": 208
     },
     {
       "name": "vanguard",
